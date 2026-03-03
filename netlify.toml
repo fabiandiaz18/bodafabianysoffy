@@ -1,0 +1,11 @@
+# ══════════════════════════════════════════════
+#   Configuración de Netlify — Fabián & Soffy
+# ══════════════════════════════════════════════
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

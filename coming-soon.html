@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#0d0a07"/>
+  <title>Fabián &amp; Soffy — Muy pronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+
+    :root {
+      --gold:       #b8963e;
+      --gold-light: #d4af6a;
+      --gold-pale:  #e8d5a3;
+      --cream:      #f5f0e8;
+      --dark:       #0d0a07;
+      --muted:      #6a5a45;
+      --col-yellow: #FCD116;
+      --col-blue:   #003087;
+      --col-red:    #CE1126;
+    }
+
+    body {
+      background: var(--dark);
+      font-family: 'EB Garamond', Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.4; mix-blend-mode: overlay;
+    }
+
+    /* ── BG IMAGE ── */
+    .bg {
+      position: fixed; inset: 0; z-index: 0;
+    }
+    .bg img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 35%;
+      animation: slowZoom 30s ease-in-out infinite alternate;
+    }
+    .bg-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(13,10,7,0.78) 0%,
+        rgba(13,10,7,0.55) 45%,
+        rgba(13,10,7,0.82) 100%
+      );
+    }
+    .bg-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 35%, rgba(13,10,7,0.7) 100%);
+    }
+
+    /* ── CANVAS ── */
+    canvas {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 1; opacity: 0.5;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      position: relative; z-index: 2;
+      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: max(48px, env(safe-area-inset-top, 48px)) 24px 24px;
+      text-align: center;
+    }
+
+    /* SVG decorative frame corners */
+    .frame-corner {
+      position: fixed;
+      width: clamp(60px, 12vw, 100px);
+      height: clamp(60px, 12vw, 100px);
+      opacity: 0.35;
+      z-index: 2;
+    }
+    .frame-tl { top: 16px; left: 16px; }
+    .frame-tr { top: 16px; right: 16px; transform: scaleX(-1); }
+    .frame-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+    .frame-br { bottom: 16px; right: 16px; transform: scale(-1); }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.48rem, 1.8vw, 0.62rem);
+      letter-spacing: 0.55em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1s 0.4s ease forwards;
+    }
+
+    /* ── MONOGRAM ── */
+    .monogram-wrap {
+      position: relative;
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeUp 1s 0.6s ease forwards;
+    }
+
+    .monogram-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(130px, 35vw, 200px);
+      height: clamp(130px, 35vw, 200px);
+      border: 1px solid rgba(184,150,62,0.2);
+      border-radius: 50%;
+      animation: ringBreath 4s ease-in-out infinite;
+    }
+    .monogram-ring-2 {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(110px, 29vw, 170px);
+      height: clamp(110px, 29vw, 170px);
+      border: 1px solid rgba(184,150,62,0.12);
+      border-radius: 50%;
+    }
+
+    .monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3.5rem, 14vw, 7rem);
+      color: var(--cream);
+      letter-spacing: 0.1em;
+      line-height: 1;
+      position: relative; z-index: 1;
+      padding: clamp(30px, 8vw, 55px);
+    }
+    .monogram em {
+      font-style: italic;
+      color: var(--gold);
+      font-size: 0.75em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin: 20px auto 20px;
+      max-width: 200px; width: 100%;
+      opacity: 0;
+      animation: fadeUp 1s 0.8s ease forwards;
+    }
+    .div-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184,150,62,0.5));
+    }
+    .div-line.r { background: linear-gradient(to left, transparent, rgba(184,150,62,0.5)); }
+    .div-gem { color: var(--gold); font-size: 0.5rem; }
+
+    /* ── NAMES ── */
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1rem, 3.5vw, 1.5rem);
+      color: var(--gold-pale);
+      letter-spacing: 0.12em;
+      margin-bottom: 6px;
+      opacity: 0;
+      animation: fadeUp 1s 1s ease forwards;
+    }
+
+    .date-badge {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.52rem, 1.8vw, 0.65rem);
+      letter-spacing: 0.4em;
+      color: rgba(184,150,62,0.6);
+      text-transform: uppercase;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 1s 1.1s ease forwards;
+    }
+
+    /* ── COMING SOON TEXT ── */
+    .coming-soon-wrap {
+      opacity: 0;
+      animation: fadeUp 1s 1.3s ease forwards;
+      margin-bottom: 36px;
+    }
+
+    .coming-soon {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1.6rem, 6vw, 3rem);
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .coming-soon-sub {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-wrap {
+      opacity: 0;
+      animation: fadeUp 1s 1.5s ease forwards;
+    }
+
+    .cd-grid {
+      display: flex;
+      gap: clamp(16px, 5vw, 40px);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cd-unit {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+      min-width: 52px;
+    }
+
+    .cd-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 7vw, 3.5rem);
+      color: var(--cream);
+      line-height: 1;
+      transition: transform 0.12s ease;
+    }
+
+    .cd-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      color: rgba(184,150,62,0.3);
+      font-weight: 300;
+      line-height: 1;
+      align-self: flex-start;
+      padding-top: 2px;
+    }
+
+    .cd-lbl {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.4rem, 1.3vw, 0.5rem);
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER STRIPE ── */
+    .stripe {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      display: flex; height: 4px; z-index: 3;
+    }
+    .s-y { flex: 2; background: var(--col-yellow); }
+    .s-b { flex: 1; background: var(--col-blue); }
+    .s-r { flex: 1; background: var(--col-red); }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.08); }
+    }
+    @keyframes ringBreath {
+      0%, 100% { transform: translate(-50%,-50%) scale(1);   opacity: 1; }
+      50%       { transform: translate(-50%,-50%) scale(1.06); opacity: 0.4; }
+    }
+    /* ── PASSWORD MODAL ── */
+    .pw-trigger {
+      margin-top: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      animation: fadeUp 1s 1.8s ease forwards;
+    }
+    .pw-trigger-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pw-trigger-line svg { color: rgba(184,150,62,0.4); transition: color 0.3s; }
+    .pw-trigger:hover .pw-trigger-line svg { color: var(--gold); }
+    .pw-trigger-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.48rem;
+      letter-spacing: 0.45em;
+      color: rgba(184,150,62,0.35);
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .pw-trigger:hover .pw-trigger-text { color: rgba(184,150,62,0.7); }
+
+    /* Modal overlay */
+    .pw-overlay {
+      position: fixed; inset: 0;
+      background: rgba(13,10,7,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .pw-overlay.open { opacity: 1; visibility: visible; }
+
+    .pw-card {
+      background: #1a1510;
+      border: 1px solid rgba(184,150,62,0.3);
+      padding: clamp(32px, 8vw, 52px) clamp(24px, 6vw, 44px);
+      width: 100%; max-width: 380px;
+      text-align: center;
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    .pw-overlay.open .pw-card { transform: translateY(0) scale(1); }
+
+    /* Corner accents on card */
+    .pw-card::before, .pw-card::after {
+      content: '';
+      position: absolute;
+      width: 16px; height: 16px;
+      border-color: rgba(184,150,62,0.4);
+      border-style: solid;
+    }
+    .pw-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .pw-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .pw-close {
+      position: absolute; top: 12px; right: 14px;
+      background: none; border: none; cursor: pointer;
+      color: rgba(184,150,62,0.3);
+      font-size: 1rem; line-height: 1;
+      transition: color 0.2s;
+      padding: 4px;
+    }
+    .pw-close:hover { color: var(--gold); }
+
+    .pw-icon {
+      width: 48px; height: 48px;
+      border: 1px solid rgba(184,150,62,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--gold);
+    }
+
+    .pw-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      color: #f5f0e8;
+      margin-bottom: 6px;
+    }
+    .pw-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #6a5a45;
+      margin-bottom: 28px;
+    }
+
+    .pw-input-wrap { position: relative; margin-bottom: 16px; }
+    .pw-input {
+      width: 100%;
+      background: rgba(245,240,232,0.04);
+      border: 1px solid rgba(184,150,62,0.25);
+      color: #f5f0e8;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.35em;
+      text-align: center;
+      padding: 14px 44px 14px 16px;
+      outline: none;
+      transition: border-color 0.3s;
+      -webkit-text-security: disc;
+    }
+    .pw-input:focus { border-color: rgba(184,150,62,0.6); }
+    .pw-input.error { border-color: rgba(206,17,38,0.6); animation: shake 0.4s ease; }
+    .pw-input.success { border-color: rgba(78,201,78,0.6); }
+
+    .pw-toggle {
+      position: absolute; right: 12px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: rgba(184,150,62,0.4); padding: 4px;
+      transition: color 0.2s;
+    }
+    .pw-toggle:hover { color: var(--gold); }
+
+    .pw-error-msg {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: rgba(206,17,38,0.8);
+      min-height: 20px;
+      margin-bottom: 16px;
+      transition: opacity 0.3s;
+    }
+
+    .pw-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #b8963e, #d4af6a);
+      border: none; cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: #0d0a07;
+      padding: 16px;
+      transition: filter 0.3s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .pw-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .pw-btn:active { transform: translateY(1px); }
+
+    /* Success flash */
+    .pw-success-flash {
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(232,213,163,0.15) 0%, transparent 70%);
+      pointer-events: none; z-index: 9001;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .pw-success-flash.show { opacity: 1; }
+
+    /* Ripple */
+    .pw-btn .ripple-w {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      transform: scale(0);
+      animation: rippleA 0.5s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes rippleA { to { transform: scale(4); opacity: 0; } }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%     { transform: translateX(-8px); }
+      40%     { transform: translateX(8px); }
+      60%     { transform: translateX(-5px); }
+      80%     { transform: translateX(5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BG -->
+  <div class="bg">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1400&q=80&auto=format&fit=crop" alt="" loading="eager"/>
+    <div class="bg-overlay"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <!-- Particles -->
+  <canvas id="particles"></canvas>
+
+  <!-- Decorative SVG corner frames -->
+  <svg class="frame-corner frame-tl" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 30 L2 2 L30 2" stroke="#d4af6a" stroke-width="1"/>
+    <path d="M8 30 L8 8 L30 8" stroke="#d4af6a" stroke-width="0.4"/>
+    <circle cx="2" cy="2" r="2" fill="#d4af6a" opacity="0.5"/>
+  </svg>
+  <svg class="frame-corner frame-tr" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 30 L2 2 L30 2" stroke="#d4af6a" stroke-width="1"/>
+    <path d="M8 30 L8 8 L30 8" stroke="#d4af6a" stroke-width="0.4"/>
+    <circle cx="2" cy="2" r="2" fill="#d4af6a" opacity="0.5"/>
+  </svg>
+  <svg class="frame-corner frame-bl" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 30 L2 2 L30 2" stroke="#d4af6a" stroke-width="1"/>
+    <path d="M8 30 L8 8 L30 8" stroke="#d4af6a" stroke-width="0.4"/>
+    <circle cx="2" cy="2" r="2" fill="#d4af6a" opacity="0.5"/>
+  </svg>
+  <svg class="frame-corner frame-br" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 30 L2 2 L30 2" stroke="#d4af6a" stroke-width="1"/>
+    <path d="M8 30 L8 8 L30 8" stroke="#d4af6a" stroke-width="0.4"/>
+    <circle cx="2" cy="2" r="2" fill="#d4af6a" opacity="0.5"/>
+  </svg>
+
+  <!-- CONTENT -->
+  <main>
+    <p class="eyebrow">Una celebración de amor</p>
+
+    <div class="monogram-wrap">
+      <div class="monogram-ring"></div>
+      <div class="monogram-ring-2"></div>
+      <div class="monogram">F <em>&amp;</em> S</div>
+    </div>
+
+    <div class="divider">
+      <div class="div-line"></div>
+      <span class="div-gem">◆</span>
+      <div class="div-line r"></div>
+    </div>
+
+    <p class="names">Fabián Díaz &amp; Soffy Monsalve</p>
+    <p class="date-badge">22 · Agosto · 2025 · Cúcuta</p>
+
+    <div class="coming-soon-wrap">
+      <h1 class="coming-soon">Muy pronto...</h1>
+      <p class="coming-soon-sub">
+        Estamos preparando algo hermoso para ti.<br>
+        Vuelve pronto para conocer todos los detalles.
+      </p>
+    </div>
+
+    <div class="countdown-wrap">
+      <div class="cd-grid">
+        <div class="cd-unit">
+          <span class="cd-num" id="d">000</span>
+          <span class="cd-lbl">Días</span>
+        </div>
+        <span class="cd-sep">·</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="h">00</span>
+          <span class="cd-lbl">Horas</span>
+        </div>
+        <span class="cd-sep">·</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="m">00</span>
+          <span class="cd-lbl">Min</span>
+        </div>
+        <span class="cd-sep">·</span>
+        <div class="cd-unit">
+          <span class="cd-num" id="s">00</span>
+          <span class="cd-lbl">Seg</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secret password button -->
+    <button class="pw-trigger" onclick="openPw()" aria-label="Acceso privado">
+      <div class="pw-trigger-line">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <span class="pw-trigger-text">Acceso privado</span>
+      </div>
+    </button>
+  </main>
+
+  <!-- PASSWORD MODAL -->
+  <div class="pw-overlay" id="pw-overlay" role="dialog" aria-modal="true">
+    <div class="pw-card">
+      <button class="pw-close" onclick="closePw()" aria-label="Cerrar">✕</button>
+      <div class="pw-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h2 class="pw-title">Acceso Privado</h2>
+      <p class="pw-subtitle">Solo para ojos especiales ✨</p>
+      <div class="pw-input-wrap">
+        <input
+          id="pw-input"
+          class="pw-input"
+          type="password"
+          placeholder="· · · · · ·"
+          autocomplete="off"
+          onkeydown="if(event.key==='Enter') checkPw()"
+          aria-label="Contraseña"
+        />
+        <button class="pw-toggle" id="pw-toggle" onclick="togglePwVisibility()" aria-label="Mostrar contraseña">
+          <svg id="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <p class="pw-error-msg" id="pw-error"></p>
+      <button class="pw-btn" id="pw-btn" onclick="checkPw()">
+        Entrar
+      </button>
+    </div>
+  </div>
+
+  <!-- Flash on success -->
+  <div class="pw-success-flash" id="pw-flash"></div>
+
+  <!-- Colombia stripe -->
+  <div class="stripe"><div class="s-y"></div><div class="s-y"></div><div class="s-b"></div><div class="s-r"></div></div>
+
+  <script>
+    /* ── COUNTDOWN — Colombia UTC-5 → 17:00 = 22:00 UTC ── */
+    var csTarget = new Date('2025-08-22T22:00:00Z').getTime();
+
+    function csTick() {
+      var diff    = csTarget - Date.now();
+      var days    = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
+      var hours   = Math.max(0, Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      var minutes = Math.max(0, Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+      var seconds = Math.max(0, Math.floor((diff % (1000 * 60)) / 1000));
+
+      var dEl = document.getElementById('d');
+      var hEl = document.getElementById('h');
+      var mEl = document.getElementById('m');
+      var sEl = document.getElementById('s');
+
+      if (dEl) dEl.textContent = String(days).padStart(3, '0');
+      if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+      if (mEl) mEl.textContent = String(minutes).padStart(2, '0');
+      if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    csTick();
+    setInterval(csTick, 1000);
+
+    /* ── PASSWORD ──────────────────────────────────────
+       Cambia 'soffy2025' por la contraseña que quieras
+    ─────────────────────────────────────────────────── */
+    var SECRET = 'soffy2025';
+    var pwVisible = false;
+
+    function openPw() {
+      document.getElementById('pw-overlay').classList.add('open');
+      setTimeout(function() { document.getElementById('pw-input').focus(); }, 400);
+    }
+
+    function closePw() {
+      document.getElementById('pw-overlay').classList.remove('open');
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-error').textContent = '';
+      document.getElementById('pw-input').classList.remove('error');
+    }
+
+    function togglePwVisibility() {
+      pwVisible = !pwVisible;
+      var input = document.getElementById('pw-input');
+      var icon  = document.getElementById('eye-icon');
+      input.type = pwVisible ? 'text' : 'password';
+      icon.innerHTML = pwVisible
+        ? '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="1.5"/>'
+        : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    }
+
+    function checkPw() {
+      var val   = document.getElementById('pw-input').value.trim();
+      var input = document.getElementById('pw-input');
+      var err   = document.getElementById('pw-error');
+
+      if (val === SECRET) {
+        // Success!
+        input.classList.remove('error');
+        input.classList.add('success');
+        err.textContent = '';
+
+        // Flash effect
+        var flash = document.getElementById('pw-flash');
+        flash.classList.add('show');
+
+        // Ripple on button
+        var btn  = document.getElementById('pw-btn');
+        var wave = document.createElement('span');
+        wave.className = 'ripple-w';
+        wave.style.cssText = 'width:300px;height:300px;left:50%;top:50%;margin-left:-150px;margin-top:-150px;';
+        btn.appendChild(wave);
+
+        setTimeout(function() {
+          window.location.href = 'wedding.html';
+        }, 800);
+
+      } else {
+        // Wrong password
+        input.classList.add('error');
+        input.classList.remove('success');
+        err.textContent = 'Contraseña incorrecta. Inténtalo de nuevo.';
+        input.value = '';
+        setTimeout(function() {
+          input.classList.remove('error');
+        }, 1000);
+      }
+    }
+
+    // Close on backdrop click
+    document.getElementById('pw-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closePw();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePw();
+    });
+
+    /* ── PARTICLES ── */
+    const canvas = document.getElementById('particles');
+    const ctx    = canvas.getContext('2d');
+    let W, H, parts, raf;
+
+    function resize() {
+      W = canvas.width  = innerWidth;
+      H = canvas.height = innerHeight;
+    }
+    function mkP() {
+      return { x: Math.random()*W, y: Math.random()*H+H,
+               vx:(Math.random()-.5)*.15, vy:-(Math.random()*.2+.06),
+               r: Math.random()*1.3+.3, a: Math.random()*.45+.1,
+               gold: Math.random() > .6 };
+    }
+    function draw() {
+      ctx.clearRect(0,0,W,H);
+      parts.forEach((p,i)=>{
+        p.x+=p.vx; p.y+=p.vy; p.a-=.0007;
+        if(p.y<-8||p.a<=0){ parts[i]=mkP(); return; }
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = p.gold ? `rgba(184,150,62,${p.a})` : `rgba(245,240,232,${p.a*.55})`;
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(draw);
+    }
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden) cancelAnimationFrame(raf); else draw();
+    });
+    resize();
+    parts = Array.from({length: Math.min(Math.floor(W*H/16000),55)}, mkP);
+    draw();
+    addEventListener('resize', ()=>{ resize(); parts=Array.from({length:Math.min(Math.floor(W*H/16000),55)},mkP); });
+  </script>
+</body>
+</html>
