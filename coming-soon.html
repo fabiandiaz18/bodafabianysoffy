@@ -8,12 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
-
   <style>
-    /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; overflow: hidden; }
-
     :root {
       --gold:       #b8963e;
       --gold-light: #d4af6a;
@@ -25,7 +22,6 @@
       --col-blue:   #003087;
       --col-red:    #CE1126;
     }
-
     body {
       background: var(--dark);
       font-family: 'EB Garamond', Georgia, serif;
@@ -33,15 +29,12 @@
       display: flex;
       flex-direction: column;
     }
-
-    /* Grain */
     body::after {
       content: '';
       position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none; z-index: 9999; opacity: 0.4; mix-blend-mode: overlay;
     }
-
     /* ── BG IMAGE ── */
     .bg {
       position: fixed; inset: 0; z-index: 0;
@@ -64,13 +57,11 @@
       position: absolute; inset: 0;
       background: radial-gradient(ellipse at center, transparent 35%, rgba(13,10,7,0.7) 100%);
     }
-
     /* ── CANVAS ── */
     canvas {
       position: fixed; inset: 0;
       pointer-events: none; z-index: 1; opacity: 0.5;
     }
-
     /* ── MAIN CONTENT ── */
     main {
       position: relative; z-index: 2;
@@ -80,7 +71,6 @@
       padding: max(48px, env(safe-area-inset-top, 48px)) 24px 24px;
       text-align: center;
     }
-
     /* SVG decorative frame corners */
     .frame-corner {
       position: fixed;
@@ -93,7 +83,6 @@
     .frame-tr { top: 16px; right: 16px; transform: scaleX(-1); }
     .frame-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
     .frame-br { bottom: 16px; right: 16px; transform: scale(-1); }
-
     /* ── EYEBROW ── */
     .eyebrow {
       font-family: 'Cinzel', serif;
@@ -105,7 +94,6 @@
       opacity: 0;
       animation: fadeUp 1s 0.4s ease forwards;
     }
-
     /* ── MONOGRAM ── */
     .monogram-wrap {
       position: relative;
@@ -341,7 +329,7 @@
     <div class="coming-soon-wrap">
       <h1 class="coming-soon">Muy pronto...</h1>
       <p class="coming-soon-sub">
-        Estamos preparando algo hermoso para ti.<br>
+        Preparate, esta fecha especial ya casi llega<br>
         Vuelve pronto para conocer todos los detalles.
       </p>
     </div>
@@ -377,7 +365,7 @@
   <script>
     /* ── COUNTDOWN ── */
     // UTC-5 Colombia: 17:00 local = 22:00 UTC
-    const TARGET = new Date('2025-08-22T22:00:00Z');
+    const TARGET = new Date('2025-08-22T17:00:00Z');
     function tick() {
       const diff = TARGET - Date.now();
       const set  = (id, val, pad) => {
