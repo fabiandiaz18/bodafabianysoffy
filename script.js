@@ -1,13 +1,6 @@
-/* ═══════════════════════════════════════════════════
-   FABIÁN & SOFFY — BODA ITALIANA 2025
-   script.js — Door FX · Countdown · Particles · Modal
-═══════════════════════════════════════════════════ */
-
 'use strict';
 
-/* ─────────────────────────────────────────
-   LOCATION DATA
-───────────────────────────────────────── */
+/*LOCATION DATA*/
 const LOCATIONS = {
   parroquia: {
     tag: 'La Ceremonia · 5:00 PM',
@@ -23,9 +16,7 @@ const LOCATIONS = {
   },
 };
 
-/* ─────────────────────────────────────────
-   LOADER
-───────────────────────────────────────── */
+/*  LOADER */
 function initLoader() {
   const loader = document.getElementById('loader');
   if (!loader) return;
@@ -42,9 +33,7 @@ function initLoader() {
   }
 }
 
-/* ─────────────────────────────────────────
-   SCROLL REVEAL
-───────────────────────────────────────── */
+/*  SCROLL REVEAL*/
 function initReveal() {
   const els = document.querySelectorAll('.reveal-up');
   if (!els.length) return;
@@ -61,11 +50,9 @@ function initReveal() {
   els.forEach(el => io.observe(el));
 }
 
-/* ─────────────────────────────────────────
-   COUNTDOWN
-───────────────────────────────────────── */
-// UTC-5 = Colombia (America/Bogota). 17:00 local = 22:00 UTC
-const WEDDING_DATE  = new Date('2025-08-22T22:00:00Z');
+/* COUNTDOWN*/
+
+const WEDDING_DATE  = new Date('2025-08-22T17:00:00Z');
 const CIRCUMFERENCE = 2 * Math.PI * 34; // r = 34
 
 function setUnit(id, display, value, max) {
@@ -86,7 +73,6 @@ function setUnit(id, display, value, max) {
   if (ringEl) {
     const pct    = 1 - Math.min(Math.max(value, 0) / max, 1);
     const offset = CIRCUMFERENCE * pct;
-    // Set dasharray explicitly so it's always correct
     ringEl.setAttribute('stroke-dasharray', String(CIRCUMFERENCE));
     ringEl.style.strokeDashoffset = offset;
     ringEl.style.transition = 'stroke-dashoffset 0.85s ease';
@@ -114,14 +100,11 @@ function updateCountdown() {
 }
 
 function initCountdown() {
-  // Run immediately so numbers show at once, then every second
   updateCountdown();
   setInterval(updateCountdown, 1000);
 }
 
-/* ─────────────────────────────────────────
-   RIPPLE EFFECT
-───────────────────────────────────────── */
+/* RIPPLE EFFECT*/
 function createRipple(el, e) {
   const rect = el.getBoundingClientRect();
   const size = Math.max(rect.width, rect.height) * 2.2;
@@ -142,9 +125,7 @@ function initRipples() {
   });
 }
 
-/* ─────────────────────────────────────────
-   DOOR ANIMATION
-───────────────────────────────────────── */
+/* DOOR ANIMATION */
 let _doorDestination = null;
 let _doorOpen        = false;
 
@@ -158,14 +139,12 @@ function openDoor(href) {
 
   overlay.classList.add('active', 'opening');
 
-  // After doors finish opening → show glow → navigate
   setTimeout(() => {
     burstConfetti();
   }, 300);
 
   setTimeout(() => {
     window.open(_doorDestination, '_blank', 'noopener');
-    // Start closing doors
     overlay.classList.remove('opening');
     overlay.classList.add('closing');
 
@@ -176,9 +155,7 @@ function openDoor(href) {
   }, 1600);
 }
 
-/* ─────────────────────────────────────────
-   MAP MODAL
-───────────────────────────────────────── */
+/*MAP MODAL*/
 let _focusReturn = null;
 
 function openMap(key) {
@@ -229,13 +206,10 @@ function initModal() {
   }
 }
 
-// Expose
 window.openMap  = openMap;
 window.closeMap = closeMap;
 
-/* ─────────────────────────────────────────
-   RSVP BUTTON → DOOR
-───────────────────────────────────────── */
+/*RSVP BUTTON → DOOR */
 function initRsvpButton() {
   const btn = document.getElementById('rsvp-btn');
   if (!btn) return;
@@ -247,9 +221,7 @@ function initRsvpButton() {
   });
 }
 
-/* ─────────────────────────────────────────
-   CONFETTI BURST
-───────────────────────────────────────── */
+/*  CONFETTI BURST */
 function burstConfetti() {
   const canvas = document.getElementById('particles');
   const ctx    = canvas?.getContext('2d');
@@ -297,9 +269,7 @@ function burstConfetti() {
   draw();
 }
 
-/* ─────────────────────────────────────────
-   FLOATING PARTICLES
-───────────────────────────────────────── */
+/* FLOATING PARTICLES */
 function initParticles() {
   const canvas = document.getElementById('particles');
   if (!canvas) return;
@@ -354,9 +324,7 @@ function initParticles() {
   window.addEventListener('resize', () => { resize(); createParticles(); });
 }
 
-/* ─────────────────────────────────────────
-   HERO PARALLAX (desktop only)
-───────────────────────────────────────── */
+/* HERO PARALLAX (desktop only) */
 function initParallax() {
   if (window.matchMedia('(hover: none)').matches) return;
   const img  = document.querySelector('.hero-img');
@@ -376,9 +344,7 @@ function initParallax() {
   });
 }
 
-/* ─────────────────────────────────────────
-   INIT
-───────────────────────────────────────── */
+/*   INIT */
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
   initCountdown();
