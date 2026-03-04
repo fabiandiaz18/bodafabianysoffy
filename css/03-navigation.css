@@ -1,80 +1,92 @@
 /* ══════════════════════════════════════════════════════
-   03-navigation.css  —  Barra de navegación sticky
-   Fabián & Soffy · Boda 22 Marzo 2026
+   03-navigation.css  —  Navbar sticky · Menú móvil
+   MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
 ══════════════════════════════════════════════════════ */
 
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 800;
-  padding: 1.2rem var(--section-padding-x);
+  padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: background 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease;
 }
-
-.navbar.scrolled {
-  background: rgba(13, 10, 7, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(212, 175, 106, 0.12);
+@media (min-width: 768px) {
+  .navbar { padding: 1.2rem var(--section-padding-x); }
 }
 
-/* Monograma / logo */
+.navbar.scrolled {
+  background: rgba(13,10,7,0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(212,175,106,0.1);
+}
+
+/* Logo */
 .navbar-logo {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-style: italic;
   color: var(--color-ivory);
   letter-spacing: 0.05em;
   transition: color 0.3s;
+  z-index: 801;
 }
 .navbar-logo:hover { color: var(--color-gold-mid); }
 
-/* Links desktop */
+/* Links desktop — ocultos en móvil */
 .navbar-links {
-  display: flex;
-  align-items: center;
-  gap: 2.2rem;
+  display: none;
   list-style: none;
 }
-
+@media (min-width: 768px) {
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
 .navbar-links a {
   font-family: var(--font-sans);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 400;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.75);
+  color: rgba(245,240,232,0.72);
   transition: color 0.3s;
   position: relative;
 }
 .navbar-links a::after {
   content: '';
   position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1px;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
   background: var(--color-gold-mid);
   transition: width 0.3s ease;
 }
 .navbar-links a:hover { color: var(--color-gold-light); }
 .navbar-links a:hover::after { width: 100%; }
 
-/* Botón hamburguesa (móvil) */
+/* Hamburguesa */
 .navbar-toggle {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 4px;
+  padding: 8px;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 801;
+  /* área táctil mínima */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
+@media (min-width: 768px) { .navbar-toggle { display: none; } }
+
 .navbar-toggle span {
   display: block;
   width: 22px;
@@ -86,24 +98,22 @@
 .navbar-toggle.open span:nth-child(2) { opacity: 0; }
 .navbar-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* Menú móvil */
+/* Menú móvil — pantalla completa */
 .navbar-mobile {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 790;
-  background: rgba(13, 10, 7, 0.97);
-  backdrop-filter: blur(12px);
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 799;
+  background: rgba(13,10,7,0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 2.2rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
 }
 .navbar-mobile.open {
   opacity: 1;
@@ -111,16 +121,13 @@
 }
 .navbar-mobile a {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
   font-style: italic;
-  color: var(--color-ivory);
-  letter-spacing: 0.05em;
-  transition: color 0.3s;
+  color: rgba(245,240,232,0.85);
+  letter-spacing: 0.04em;
+  transition: color 0.25s;
+  /* área táctil cómoda */
+  padding: 0.5rem 1.5rem;
 }
-.navbar-mobile a:hover { color: var(--color-gold-mid); }
-
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .navbar-links  { display: none; }
-  .navbar-toggle { display: flex; }
-}
+.navbar-mobile a:hover,
+.navbar-mobile a:active { color: var(--color-gold-mid); }

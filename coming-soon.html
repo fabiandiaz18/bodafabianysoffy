@@ -122,6 +122,16 @@
 
 <!-- Scripts -->
 <script src="js/06-coming-soon.js"></script>
+<script>
+  // Activar elementos reveal-up inmediatamente (sin loader)
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.reveal-up').forEach(function (el) {
+      setTimeout(function () { el.classList.add('visible'); },
+        parseFloat(getComputedStyle(el).getPropertyValue('--delay') || '0') * 1000
+      );
+    });
+  });
+</script>
 
 </body>
 </html>

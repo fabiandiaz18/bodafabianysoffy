@@ -125,4 +125,5 @@
       setTimeout(function () { el.classList.add('visible'); }, delay + 150);
     });
   });
+
 })();
