@@ -1,0 +1,151 @@
+/* ══════════════════════════════════════════════════════
+   00-intro-envelope.css
+   Animación de entrada: Sobre con sello → apertura → fade
+   MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
+══════════════════════════════════════════════════════ */
+
+/* ── Overlay principal: cubre toda la pantalla ── */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ede8dc;
+  overflow: hidden;
+  /* Cursor pointer para indicar que es clickeable */
+  cursor: pointer;
+  /* iOS: evitar scroll/bounce al tocar */
+  touch-action: none;
+  -webkit-overflow-scrolling: none;
+}
+
+#intro-overlay.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+#intro-overlay.gone {
+  display: none !important;
+}
+
+/* ════════════════════════════════
+   FASE 1 — Imagen estática
+════════════════════════════════ */
+#intro-static {
+  position: absolute;
+  inset: 0;
+  background: #ede8dc;
+  transition: opacity 0.5s ease;
+}
+#intro-static.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#intro-static img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Centrar en el sello — coincide con el frame 1 del video */
+  object-position: 50% 48%;
+  display: block;
+  /* Sutil zoom-in mientras espera, refuerza la anticipación */
+  animation: staticBreath 6s ease-in-out infinite;
+}
+
+@keyframes staticBreath {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.025); }
+}
+
+/* Texto de ayuda "Toca para abrir" */
+#intro-tap-hint {
+  position: absolute;
+  bottom: clamp(2rem, 7vh, 4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  animation: hintFloat 2.5s ease-in-out infinite;
+}
+#intro-tap-hint span {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: clamp(0.72rem, 2.2vw, 0.9rem);
+  font-style: italic;
+  letter-spacing: 0.3em;
+  color: rgba(100, 75, 30, 0.5);
+  white-space: nowrap;
+}
+#intro-tap-hint svg {
+  width: 18px;
+  height: 18px;
+  stroke: rgba(184, 150, 62, 0.5);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@keyframes hintFloat {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0px); }
+  50%       { opacity: 1;   transform: translateX(-50%) translateY(-6px); }
+}
+
+/* ════════════════════════════════
+   FASE 2 — Video de apertura
+════════════════════════════════ */
+#intro-video-wrap {
+  position: absolute;
+  inset: 0;
+  background: #ede8dc;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+  /* El video debe quedar exactamente sobre la imagen estática */
+}
+#intro-video-wrap.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#intro-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Mismo crop que la imagen estática para continuidad perfecta */
+  object-position: 50% 48%;
+  display: block;
+  pointer-events: none;
+  /* Sin controles, sin interacción */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ════════════════════════════════
+   FASE 3 — Flash / fade a blanco
+════════════════════════════════ */
+#intro-flash {
+  position: absolute;
+  inset: 0;
+  /* Gradiente radial desde el centro — más orgánico que un blanco plano */
+  background: radial-gradient(
+    ellipse 120% 120% at 50% 45%,
+    #ffffff 0%,
+    #f5f0e8 60%,
+    #ede8dc 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+  z-index: 10;
+}
+#intro-flash.fade-in {
+  opacity: 1;
+  transition: opacity 0.95s cubic-bezier(0.4, 0, 0.2, 1);
+}

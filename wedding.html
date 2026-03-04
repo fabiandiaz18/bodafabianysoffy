@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#0d0a07"/>
   <title>Fabián &amp; Soffy — 22 Marzo 2026</title>
 
-  <!-- CSS modular -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/00-intro-envelope.css"/>
   <link rel="stylesheet" href="css/01-base.css"/>
-  <link rel="stylesheet" href="css/02-loader-door.css"/>
   <link rel="stylesheet" href="css/03-navigation.css"/>
   <link rel="stylesheet" href="css/04-hero-countdown.css"/>
   <link rel="stylesheet" href="css/05-sections-content.css"/>
@@ -17,52 +17,45 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     LOADER
-══════════════════════════════════════ -->
-<div id="loader" class="loader">
-  <div class="loader-monogram">F <span>&amp;</span> S</div>
-  <div class="loader-bar"><div class="loader-fill"></div></div>
-</div>
+<!-- ══════════════════════════════════════════════════
+     INTRO — Sobre con sello lacre + Video apertura
+══════════════════════════════════════════════════ -->
+<div id="intro-overlay" role="presentation" aria-hidden="true">
 
-<!-- ══════════════════════════════════════
-     ANIMACIÓN DE PUERTAS 3D
-══════════════════════════════════════ -->
-<div id="door-overlay" class="door-overlay" aria-hidden="true">
-  <div class="door-bg-glow"></div>
-  <div class="door-reveal-text">
-    <span class="door-reveal-monogram">F <em>&amp;</em> S</span>
-    <span class="door-reveal-sub">os esperan</span>
-  </div>
-  <div class="door door-left">
-    <div class="door-panel-inner">
-      <div class="door-wood-grain"></div>
-      <div class="door-molding door-molding-top"></div>
-      <div class="door-molding door-molding-bottom"></div>
-      <div class="door-handle door-handle-right">
-        <div class="door-handle-plate"></div>
-        <div class="door-knob"></div>
-      </div>
-      <div class="door-hinge door-hinge-top-l"></div>
-      <div class="door-hinge door-hinge-bot-l"></div>
+  <!-- Fase 1: Imagen estática — espera click o 300s -->
+  <div id="intro-static">
+    <img
+      src="images/sobre-sello.jpg"
+      alt="Sobre con sello F&S"
+      draggable="false"
+    />
+    <!-- Texto de ayuda flotante -->
+    <div id="intro-tap-hint">
+      <span>Toca para abrir</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
     </div>
   </div>
-  <div class="door door-right">
-    <div class="door-panel-inner">
-      <div class="door-wood-grain"></div>
-      <div class="door-molding door-molding-top"></div>
-      <div class="door-molding door-molding-bottom"></div>
-      <div class="door-handle door-handle-left">
-        <div class="door-handle-plate"></div>
-        <div class="door-knob"></div>
-      </div>
-      <div class="door-hinge door-hinge-top-r"></div>
-      <div class="door-hinge door-hinge-bot-r"></div>
-    </div>
-  </div>
-</div>
 
-<!-- ══════════════════════════════════════
+  <!-- Fase 2: Video de apertura del sobre -->
+  <div id="intro-video-wrap">
+    <video
+      id="intro-video"
+      src="images/carta-animacion.mp4"
+      muted
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      aria-hidden="true"
+    ></video>
+  </div>
+
+  <!-- Fase 3: Flash/fade a blanco que revela la página -->
+  <div id="intro-flash" aria-hidden="true"></div>
+
+</div><!-- /intro-overlay -->
+
      NAVEGACIÓN
 ══════════════════════════════════════ -->
 <nav id="navbar" class="navbar" role="navigation" aria-label="Menú principal">
@@ -653,12 +646,13 @@
 <!-- Canvas de partículas doradas -->
 <canvas id="particles" class="particles-canvas" aria-hidden="true"></canvas>
 
-<!-- ══════════════ SCRIPTS (en orden de dependencia) ══════════════ -->
+
+<!-- ══════════════ SCRIPTS ══════════════ -->
+<script src="js/00-intro-envelope.js"></script>
 <script src="js/03-countdown.js"></script>
 <script src="js/04-map-interactions.js"></script>
 <script src="js/05-particles-parallax.js"></script>
 <script src="js/02-navigation.js"></script>
-<script src="js/01-loader-door.js"></script>
 
 </body>
 </html>
