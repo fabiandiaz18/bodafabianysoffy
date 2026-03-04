@@ -1,0 +1,231 @@
+/* ══════════════════════════════════════════════════════
+   05-sections-content.css  —  Quote · Nuestra Historia
+                                Itinerario
+   Fabián & Soffy · Boda 22 Marzo 2026
+══════════════════════════════════════════════════════ */
+
+/* ══ QUOTE ══ */
+.quote-section {
+  position: relative;
+  padding: var(--section-padding-y) var(--section-padding-x);
+  overflow: hidden;
+  text-align: center;
+}
+.quote-bg {
+  position: absolute;
+  inset: 0;
+}
+.quote-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.quote-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 10, 7, 0.72);
+}
+.quote-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 740px;
+  margin-inline: auto;
+}
+.quote-mark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 9rem);
+  color: var(--color-gold-mid);
+  opacity: 0.25;
+  line-height: 0.6;
+  margin-bottom: 1.5rem;
+}
+.quote-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.8vw, 1.6rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-ivory);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+.quote-author {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-gold-mid);
+  opacity: 0.75;
+}
+
+/* ══ NUESTRA HISTORIA (Polaroids — del proyecto Lovable) ══ */
+.story-section {
+  background: var(--color-ivory-warm);
+  padding: var(--section-padding-y) var(--section-padding-x);
+  text-align: center;
+}
+
+.story-section .section-tag    { color: var(--color-olive-light); }
+.story-section .section-heading { color: var(--color-black-soft); font-style: italic; }
+
+.story-intro {
+  font-family: var(--font-sans);
+  color: rgba(13, 10, 7, 0.6);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 1rem auto 3rem;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem 2rem;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 0.75rem 0.75rem 3rem;
+  box-shadow: 0 6px 24px rgba(13,10,7,0.14), 0 2px 6px rgba(13,10,7,0.08);
+  transform: rotate(var(--rot, -2deg));
+  transition: transform 0.5s var(--ease-silk), box-shadow 0.5s ease;
+  cursor: default;
+}
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 14px 40px rgba(13,10,7,0.2), 0 4px 10px rgba(13,10,7,0.1);
+}
+.polaroid:nth-child(1) { --rot: -3deg; }
+.polaroid:nth-child(2) { --rot:  2deg; }
+.polaroid:nth-child(3) { --rot: -1deg; }
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: grayscale(20%) sepia(15%);
+}
+
+.polaroid-caption {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(13,10,7,0.55);
+  text-align: center;
+  margin-top: 0.8rem;
+  line-height: 1.5;
+  padding: 0 0.3rem;
+}
+
+/* ══ ITINERARIO (Timeline — del proyecto Lovable) ══ */
+.itinerary-section {
+  background: var(--color-ivory-dark);
+  padding: var(--section-padding-y) var(--section-padding-x);
+  text-align: center;
+}
+
+.itinerary-section .section-tag    { color: var(--color-olive-light); }
+.itinerary-section .section-heading { color: var(--color-black-soft); }
+
+.itinerary-timeline {
+  position: relative;
+  max-width: 860px;
+  margin: 3rem auto 0;
+}
+
+/* Línea vertical central */
+.itinerary-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent, rgba(184,150,62,0.3) 15%, rgba(184,150,62,0.3) 85%, transparent);
+  transform: translateX(-50%);
+}
+
+.itinerary-item {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+  text-align: left;
+}
+.itinerary-item:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+
+.itinerary-content { flex: 1; }
+
+.itinerary-time {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--color-gold);
+  margin-bottom: 0.3rem;
+}
+.itinerary-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: var(--color-black-soft);
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.itinerary-place {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-olive-light);
+  margin-bottom: 0.6rem;
+}
+.itinerary-desc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: rgba(13,10,7,0.58);
+  line-height: 1.7;
+}
+
+/* Ícono central */
+.itinerary-icon {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(184,150,62,0.45);
+  background: var(--color-ivory-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.itinerary-icon svg {
+  width: 22px;
+  height: 22px;
+  color: var(--color-olive);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.itinerary-spacer { flex: 1; }
+
+/* ── Responsive timeline ── */
+@media (max-width: 640px) {
+  .itinerary-timeline::before { left: 26px; }
+  .itinerary-item,
+  .itinerary-item:nth-child(even) {
+    flex-direction: row;
+    text-align: left;
+    gap: 1.2rem;
+  }
+  .itinerary-spacer { display: none; }
+  .itinerary-icon { flex: 0 0 44px; width: 44px; height: 44px; }
+}

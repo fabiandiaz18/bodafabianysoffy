@@ -1,0 +1,254 @@
+/* ══════════════════════════════════════════════════════
+   04-hero-countdown.css  —  Hero · Contador regresivo
+   Fabián & Soffy · Boda 22 Marzo 2026
+══════════════════════════════════════════════════════ */
+
+/* ══ HERO ══ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-img-wrap {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.hero-img {
+  width: 100%;
+  height: 115%;
+  object-fit: cover;
+  object-position: center top;
+  transform: translateY(0);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13,10,7,0.35) 0%,
+    rgba(13,10,7,0.55) 60%,
+    rgba(13,10,7,0.80) 100%
+  );
+}
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%,
+    transparent 40%, rgba(13,10,7,0.55) 100%);
+}
+
+/* Marco SVG decorativo */
+.hero-frame {
+  position: absolute;
+  inset: 1.5rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: var(--section-padding-x);
+  padding-top: calc(var(--section-padding-x) + 3rem);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(232, 213, 163, 0.75);
+  margin-bottom: 1.8rem;
+}
+
+.hero-names-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  flex-wrap: wrap;
+}
+
+.hero-name-1,
+.hero-name-2 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-ivory);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.hero-amp-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+.hero-amp-line {
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(180deg, transparent, var(--color-gold-mid), transparent);
+}
+.hero-amp {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--color-gold-mid);
+  font-style: italic;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.8rem auto;
+  max-width: 280px;
+}
+.hero-divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(212, 175, 106, 0.4);
+}
+.hero-divider-gem {
+  font-size: 0.5rem;
+  color: var(--color-gold-mid);
+  letter-spacing: 0.4em;
+}
+
+.hero-date {
+  font-family: var(--font-title);
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  letter-spacing: 0.5em;
+  color: var(--color-gold-light);
+}
+.hero-location {
+  font-family: var(--font-sans);
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.55);
+  margin-top: 0.5rem;
+}
+
+.hero-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 3rem;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.4);
+}
+.hero-scroll-arrow { animation: scrollBounce 2s ease-in-out infinite; }
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* ══ COUNTDOWN ══ */
+.countdown-section {
+  position: relative;
+  background: var(--color-ivory-warm);
+  padding: var(--section-padding-y) var(--section-padding-x);
+  text-align: center;
+  overflow: hidden;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cd-box {
+  position: relative;
+  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1rem, 2.5vw, 1.8rem);
+  border: 1px solid rgba(184, 150, 62, 0.35);
+  background: rgba(13, 10, 7, 0.04);
+}
+.cd-box::before,
+.cd-box::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--color-gold);
+  border-style: solid;
+}
+.cd-box::before { top: -1px; left: -1px;   border-width: 1.5px 0 0 1.5px; }
+.cd-box::after  { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
+
+.cd-box span {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--color-black);
+  line-height: 1;
+  min-width: 2ch;
+  display: block;
+  text-align: center;
+}
+
+.cd-label {
+  font-family: var(--font-title);
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.cd-sep {
+  font-size: 1.5rem;
+  color: var(--color-gold-mid);
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+  align-self: flex-end;
+  padding-bottom: 1.8rem;
+}
+
+.cd-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.cd-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(184, 150, 62, 0.35);
+}
+.cd-ornament span {
+  font-size: 0.6rem;
+  color: var(--color-gold-mid);
+}
+
+/* Override heading color para sección crema */
+.countdown-section .section-tag    { color: var(--color-gold); }
+.countdown-section .section-heading { color: var(--color-black-soft); }
