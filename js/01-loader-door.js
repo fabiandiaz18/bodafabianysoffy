@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════════════════════
-   01-loader-door.js  —  Loader de progreso · Puertas 3D
-   Fabián & Soffy · Boda 22 Marzo 2026
-══════════════════════════════════════════════════════ */
+/*   01-loader-door.js  —  Loader de progreso · Puertas 3D */
 
 (function () {
   'use strict';

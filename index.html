@@ -1,21 +1,10 @@
 <!DOCTYPE html>
-<!--
-  ══════════════════════════════════════════════════
-  index.html  —  Router de apertura/cierre del sitio
-  Fabián & Soffy · Boda 22 Marzo 2026
-  ══════════════════════════════════════════════════
-
-  ★  CÓMO USAR:
-     • SITE_OPEN = false  →  muestra coming-soon.html (sitio cerrado)
-     • SITE_OPEN = true   →  muestra wedding.html (sitio abierto)
-
-  Cambia la variable en el script de abajo.
--->
+<!--Index-->
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fabián &amp; Soffy — 22 Marzo 2026</title>
+  <title>Fabián &amp; Soffy — 22 Agosto 2026</title>
   <noscript>
     <!-- Fallback sin JavaScript: redirigir a coming-soon -->
     <meta http-equiv="refresh" content="0;url=coming-soon.html"/>
@@ -23,12 +12,8 @@
 </head>
 <body>
 <script>
-  /* ──────────────────────────────────────────────
-     ★  CAMBIA AQUÍ PARA ABRIR O CERRAR EL SITIO
-     ──────────────────────────────────────────── */
+  /* PARA ABRIR O CERRAR EL SITIO */
   var SITE_OPEN = false;
-  /* ────────────────────────────────────────────── */
-
   window.location.replace(SITE_OPEN ? 'wedding.html' : 'coming-soon.html');
 </script>
 </body>

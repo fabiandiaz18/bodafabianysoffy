@@ -120,49 +120,74 @@
   position: relative;
   max-width: 820px;
   margin: 2.2rem auto 0;
-  text-align: left;
 }
 
-/* Línea siempre a la izquierda en móvil */
+/* Línea vertical:
+   Móvil → pegada al ícono (left: 20px)
+   Desktop → centrada (50%)            */
 .itinerary-timeline::before {
   content: '';
   position: absolute;
-  left: 21px; top: 0; bottom: 0; width: 1px;
+  left: 20px; top: 0; bottom: 0; width: 1px;
   background: linear-gradient(180deg,
-    transparent, rgba(184,150,62,0.25) 12%,
-    rgba(184,150,62,0.25) 88%, transparent);
+    transparent, rgba(184,150,62,0.3) 10%,
+    rgba(184,150,62,0.3) 90%, transparent);
 }
 @media (min-width: 640px) {
   .itinerary-timeline::before { left: 50%; transform: translateX(-50%); }
 }
 
-/* Item: siempre fila en móvil */
+/* ────────────────────────────────
+   MÓVIL: grid 2 cols fijo
+   col-1 = ícono (42px) | col-2 = texto
+   Todos los items igual, sin importar si son par o impar
+──────────────────────────────── */
 .itinerary-item {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1.1rem;
-  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  grid-template-areas: "icon content";
+  align-items: start;
+  column-gap: 1rem;
+  margin-bottom: 2.8rem;
   text-align: left;
 }
-@media (min-width: 640px) {
-  .itinerary-item { gap: 2.5rem; align-items: center; }
-  .itinerary-item:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+
+.itinerary-icon {
+  grid-area: icon;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(184,150,62,0.38);
+  background: var(--color-ivory-warm);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 2;
+  margin-top: 0.15rem;
+}
+.itinerary-icon svg {
+  width: 20px; height: 20px;
+  color: var(--color-olive);
+  stroke: currentColor; fill: none;
+  stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
 }
 
-.itinerary-content { flex: 1; min-width: 0; padding-top: 0.1rem; }
+.itinerary-content {
+  grid-area: content;
+  min-width: 0;
+}
+
+/* El spacer no existe en móvil */
+.itinerary-spacer { display: none; }
 
 .itinerary-time {
   font-family: var(--font-display);
   font-size: clamp(1.3rem, 4.5vw, 2rem);
   font-style: italic; color: var(--color-gold);
-  margin-bottom: 0.15rem; line-height: 1.1;
+  margin-bottom: 0.1rem; line-height: 1.1;
 }
 .itinerary-title {
   font-family: var(--font-serif);
   font-size: clamp(1rem, 2.8vw, 1.4rem);
   color: var(--color-black-soft); font-weight: 400;
-  margin-bottom: 0.12rem;
+  margin-bottom: 0.1rem;
 }
 .itinerary-place {
   font-family: var(--font-sans);
@@ -176,25 +201,27 @@
   color: rgba(13,10,7,0.54); line-height: 1.65;
 }
 
-/* Ícono circular */
-.itinerary-icon {
-  flex: 0 0 42px; width: 42px; height: 42px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(184,150,62,0.38);
-  background: var(--color-ivory-warm);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; z-index: 2; flex-shrink: 0;
-  margin-top: 0.2rem;
-}
+/* ────────────────────────────────
+   DESKTOP (640px+): flex alternado
+   Item impar → ícono centro, texto izquierda
+   Item par   → ícono centro, texto derecha
+──────────────────────────────── */
 @media (min-width: 640px) {
-  .itinerary-icon { flex: 0 0 50px; width: 50px; height: 50px; margin-top: 0; }
+  .itinerary-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+    text-align: left;
+  }
+  .itinerary-icon {
+    flex: 0 0 50px; width: 50px; height: 50px;
+    margin-top: 0;
+  }
+  .itinerary-content { flex: 1; }
+  .itinerary-spacer  { display: block; flex: 1; }
+  .itinerary-item:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
 }
-.itinerary-icon svg {
-  width: 20px; height: 20px;
-  color: var(--color-olive);
-  stroke: currentColor; fill: none;
-  stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
-}
-
-.itinerary-spacer { display: none; }
-@media (min-width: 640px) { .itinerary-spacer { display: block; flex: 1; } }

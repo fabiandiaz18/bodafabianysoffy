@@ -1,15 +1,11 @@
-/* ══════════════════════════════════════════════════════
-   03-countdown.js  —  Contador regresivo
-   Boda: 22 de Marzo de 2026 — hora local
-   Fabián & Soffy · Boda 22 Marzo 2026
-══════════════════════════════════════════════════════ */
+/*   03-countdown.js  —  Contador regresivo */
 
 (function () {
   'use strict';
 
   // ── Fecha objetivo (constructor numérico = hora local del dispositivo)
   // new Date(año, mes-1, día)  →  mes 2 = marzo (0-indexed)
-  var WEDDING_DATE = new Date(2026, 2, 22).getTime();
+  var WEDDING_DATE = new Date(2026, 7, 22).getTime();
 
   function pad(n, len) {
     return String(Math.max(0, n)).padStart(len || 2, '0');
