@@ -1,4 +1,8 @@
-/*   Animación de entrada: Sobre con sello → video apertura → fade blanco */
+/* ══════════════════════════════════════════════════════
+   00-intro-envelope.js
+   Animación de entrada: Sobre con sello → video apertura → fade blanco
+   Fabián & Soffy · Boda 22 Marzo 2026
+══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';

@@ -1,9 +1,12 @@
 /* ══════════════════════════════════════════════════════
    04-hero-countdown.css  —  Hero · Contador regresivo
    MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
+
+   TheBigmaker  → nombres Fabián & Soffy, & ampersand
+   CormorantSC  → eyebrow, fecha, ubicación, labels
+   Lato         → scroll hint
 ══════════════════════════════════════════════════════ */
 
-/* ══ HERO ══ */
 .hero {
   position: relative;
   min-height: 100svh;
@@ -12,37 +15,25 @@
   justify-content: center;
   overflow: hidden;
 }
-
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-img-wrap { position: absolute; inset: 0; will-change: transform; }
 .hero-img {
   width: 100%; height: 115%;
   object-fit: cover; object-position: center 20%;
-  transform: translateY(0);
 }
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(13,10,7,0.25) 0%,
-    rgba(13,10,7,0.5) 55%,
-    rgba(13,10,7,0.88) 100%
-  );
+  background: linear-gradient(180deg,
+    rgba(13,10,7,0.2) 0%, rgba(13,10,7,0.48) 55%, rgba(13,10,7,0.88) 100%);
 }
 .hero-vignette {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 90% 90% at 50% 50%,
-    transparent 35%, rgba(13,10,7,0.55) 100%);
+    transparent 35%, rgba(13,10,7,0.5) 100%);
 }
-
-/* Marco decorativo SVG — visible en todos los tamaños */
 .hero-frame {
-  position: absolute;
-  inset: 0.6rem;
-  z-index: 2;
-  pointer-events: none;
-  width: calc(100% - 1.2rem);
-  height: calc(100% - 1.2rem);
+  position: absolute; inset: 0.6rem; z-index: 2; pointer-events: none;
+  width: calc(100% - 1.2rem); height: calc(100% - 1.2rem);
 }
 @media (min-width: 480px) {
   .hero-frame { inset: 1.4rem; width: calc(100% - 2.8rem); height: calc(100% - 2.8rem); }
@@ -56,15 +47,17 @@
 }
 @media (min-width: 480px) { .hero-content { padding: 6rem 2rem 3rem; } }
 
+/* "CON TUTTO L'AMORE · OS INVITAMOS A CELEBRAR"
+   → CormorantSC Medium, espaciado alto */
 .hero-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.52rem;
-  letter-spacing: 0.32em;
+  font-family: var(--font-sc);
+  font-weight: 500;
+  font-size: clamp(0.55rem, 1.6vw, 0.72rem);
+  letter-spacing: 0.38em;
   text-transform: uppercase;
-  color: rgba(232,213,163,0.68);
-  margin-bottom: 1.4rem;
+  color: rgba(232,213,163,0.7);
+  margin-bottom: 1.6rem;
 }
-@media (min-width: 480px) { .hero-eyebrow { font-size: 0.63rem; letter-spacing: 0.42em; } }
 
 /* Nombres — columna en móvil, fila en tablet+ */
 .hero-names-wrap {
@@ -77,84 +70,104 @@
   .hero-names-wrap {
     flex-direction: row;
     justify-content: center;
-    gap: clamp(0.8rem, 3vw, 2.5rem);
+    gap: clamp(1rem, 3vw, 3rem);
   }
 }
 
+/* "Fabián" y "Soffy"
+   → TheBigmaker, protagonistas absolutos */
 .hero-name-1, .hero-name-2 {
-  font-family: var(--font-display);
-  font-size: clamp(3.2rem, 14vw, 8rem);
-  font-weight: 300; font-style: italic;
+  font-family: var(--font-big);
+  font-size: clamp(4.5rem, 20vw, 13rem);
+  font-weight: 400;
   color: var(--color-ivory);
-  line-height: 1.02; letter-spacing: 0.02em;
+  line-height: 1;
+  letter-spacing: 0.01em;
 }
 
-/* & — horizontal en móvil */
+/* "&"
+   → CormorantSC, complementario */
 .hero-amp-wrap {
   display: flex; flex-direction: row;
-  align-items: center; gap: 0.7rem;
-  margin: 0.3rem 0;
+  align-items: center; gap: 0.8rem;
+  margin: 0.2rem 0;
 }
 @media (min-width: 480px) {
-  .hero-amp-wrap { flex-direction: column; gap: 0.4rem; margin: 0; }
+  .hero-amp-wrap { flex-direction: column; gap: 0.5rem; margin: 0; }
 }
-
 .hero-amp-line {
   width: 1.2rem; height: 1px;
-  background: rgba(212,175,106,0.38);
+  background: rgba(212,175,106,0.35);
 }
 @media (min-width: 480px) {
   .hero-amp-line {
-    width: 1px; height: 2rem;
+    width: 1px; height: 2.2rem;
     background: linear-gradient(180deg, transparent, var(--color-gold-mid), transparent);
   }
 }
-
 .hero-amp {
-  font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 5.5vw, 3rem);
-  color: var(--color-gold-mid); font-style: italic;
+  font-family: var(--font-sc);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
+  color: var(--color-gold-mid);
 }
 
+/* Divider decorativo */
 .hero-divider {
   display: flex; align-items: center; justify-content: center;
   gap: 0.7rem; margin: 1rem auto; max-width: 180px;
 }
-@media (min-width: 480px) { .hero-divider { margin: 1.6rem auto; max-width: 260px; } }
+@media (min-width: 480px) { .hero-divider { margin: 1.8rem auto; max-width: 280px; } }
+.hero-divider-line { flex: 1; height: 1px; background: rgba(212,175,106,0.28); }
+.hero-divider-gem  { font-size: 0.4rem; color: var(--color-gold-mid); }
 
-.hero-divider-line { flex: 1; height: 1px; background: rgba(212,175,106,0.32); }
-.hero-divider-gem  { font-size: 0.42rem; color: var(--color-gold-mid); }
-
+/* "XXII · MARZO · MMXXVI"
+   → CormorantSC SemiBold, espaciado romano */
 .hero-date {
-  font-family: var(--font-title);
-  font-size: clamp(0.52rem, 2.8vw, 0.88rem);
-  letter-spacing: 0.38em; color: var(--color-gold-light);
-}
-.hero-location {
-  font-family: var(--font-sans);
-  font-size: 0.52rem; letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.48); margin-top: 0.4rem;
+  font-family: var(--font-sc);
+  font-weight: 600;
+  font-size: clamp(0.65rem, 2.5vw, 1rem);
+  letter-spacing: 0.42em;
+  color: var(--color-gold-light);
 }
 
+/* "CÚCUTA, COLOMBIA"
+   → CormorantSC Regular */
+.hero-location {
+  font-family: var(--font-sc);
+  font-weight: 400;
+  font-size: clamp(0.55rem, 1.5vw, 0.72rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.45);
+  margin-top: 0.35rem;
+}
+
+/* "DESCUBRE ↓"
+   → Lato, funcional */
 .hero-scroll {
   display: flex; flex-direction: column;
-  align-items: center; gap: 0.45rem; margin-top: 2.2rem;
-  font-family: var(--font-sans); font-size: 0.52rem;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: rgba(245,240,232,0.32);
+  align-items: center; gap: 0.45rem; margin-top: 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(245,240,232,0.28);
 }
 .hero-scroll-arrow { animation: scrollBounce 2s ease-in-out infinite; }
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(5px); }
+  50%       { transform: translateY(6px); }
 }
 
-/* ══ COUNTDOWN ══ */
+/* ══ COUNTDOWN ══════════════════════════════════════
+   TheBigmaker  → "Faltan para el gran día" (heading)
+   CormorantSC  → números, labels (DÍAS, HORAS…)
+   Lato         → tag "IL CONTO ALLA ROVESCIA"
+══════════════════════════════════════════════════ */
 .countdown-section {
   position: relative;
   background: var(--color-ivory-warm);
-  padding: clamp(2.8rem, 8vw, 6rem) var(--section-padding-x);
+  padding: clamp(3rem, 8vw, 6rem) var(--section-padding-x);
   text-align: center;
   overflow: hidden;
 }
@@ -163,35 +176,32 @@
 
 .cd-ornament {
   display: flex; align-items: center; justify-content: center;
-  gap: 0.7rem; margin: 0.7rem 0;
+  gap: 0.7rem; margin: 0.6rem 0;
 }
-.cd-line { width: 40px; height: 1px; background: rgba(184,150,62,0.25); }
-.cd-ornament span { font-size: 0.52rem; color: var(--color-gold-mid); }
+.cd-line { width: 40px; height: 1px; background: rgba(184,150,62,0.22); }
+.cd-ornament span { font-size: 0.45rem; color: var(--color-gold-mid); }
 
-/* Contador: nunca hace wrap, siempre en línea */
 .countdown-grid {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: clamp(0.18rem, 1.8vw, 1.2rem);
+  gap: clamp(0.15rem, 1.8vw, 1.2rem);
   flex-wrap: nowrap;
-  margin-top: 1.6rem;
+  margin-top: 1.8rem;
 }
-
 .cd-unit {
   display: flex; flex-direction: column;
-  align-items: center; gap: 0.45rem;
-  /* No se encojan demasiado */
+  align-items: center; gap: 0.5rem;
   min-width: 0;
 }
 
+/* Recuadro con esquinas doradas */
 .cd-box {
   position: relative;
-  padding: clamp(0.4rem, 1.6vw, 1.1rem) clamp(0.35rem, 1.8vw, 1.5rem);
-  border: 1px solid rgba(184,150,62,0.26);
-  background: rgba(13,10,7,0.03);
+  padding: clamp(0.5rem, 1.6vw, 1.2rem) clamp(0.4rem, 1.8vw, 1.6rem);
+  border: 1px solid rgba(184,150,62,0.24);
+  background: rgba(13,10,7,0.025);
 }
-/* Esquinas decorativas del recuadro */
 .cd-box::before, .cd-box::after {
   content: ''; position: absolute;
   width: 6px; height: 6px;
@@ -200,25 +210,31 @@
 .cd-box::before { top: -1px; left: -1px;    border-width: 1.5px 0 0 1.5px; }
 .cd-box::after  { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
 
+/* Números: 160, 04, 33, 20
+   → CormorantSC Light, elegante */
 .cd-box span {
-  font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 7vw, 4rem);
-  font-weight: 300; color: var(--color-black);
+  font-family: var(--font-sc);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 7.5vw, 4.5rem);
+  color: var(--color-black);
   line-height: 1; min-width: 2ch;
   display: block; text-align: center;
 }
 
+/* Labels: DÍAS, HORAS, MINUTOS, SEGUNDOS
+   → CormorantSC Medium */
 .cd-label {
-  font-family: var(--font-title);
-  font-size: clamp(0.35rem, 1.15vw, 0.52rem);
-  letter-spacing: 0.25em; text-transform: uppercase;
+  font-family: var(--font-sc);
+  font-weight: 500;
+  font-size: clamp(0.38rem, 1.1vw, 0.55rem);
+  letter-spacing: 0.28em; text-transform: uppercase;
   color: var(--color-gold);
   white-space: nowrap;
 }
 
 .cd-sep {
-  font-size: clamp(0.85rem, 3.5vw, 1.5rem);
-  color: var(--color-gold-mid); opacity: 0.42;
-  padding-bottom: clamp(0.9rem, 3.5vw, 2rem);
+  font-size: clamp(0.9rem, 3.5vw, 1.6rem);
+  color: var(--color-gold-mid); opacity: 0.38;
+  padding-bottom: clamp(1rem, 3.5vw, 2.2rem);
   line-height: 1; flex-shrink: 0;
 }

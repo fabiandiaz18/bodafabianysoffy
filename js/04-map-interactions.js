@@ -1,4 +1,7 @@
-/* 04-map-interactions.js  —  Modal de mapas · Ripple */
+/* ══════════════════════════════════════════════════════
+   04-map-interactions.js  —  Modal de mapas · Ripple
+   Fabián & Soffy · Boda 22 Marzo 2026
+══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';

@@ -3,9 +3,55 @@
    MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
 ══════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap');
+/* ── Fuentes locales ── */
+@font-face {
+  font-family: 'CormorantSC';
+  src: url('../fonts/CormorantSC-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CormorantSC';
+  src: url('../fonts/CormorantSC-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CormorantSC';
+  src: url('../fonts/CormorantSC-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CormorantSC';
+  src: url('../fonts/CormorantSC-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CormorantSC';
+  src: url('../fonts/CormorantSC-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TheBigmaker';
+  src: url('../fonts/TheBigmaker.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Google Fonts de respaldo ── */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
 :root {
+  /* Colores */
   --color-black:       #0d0a07;
   --color-black-soft:  #1a1510;
   --color-black-card:  #13100c;
@@ -23,16 +69,35 @@
   --col-blue:   #003087;
   --col-red:    #CE1126;
 
-  --font-serif:   'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-title:   'Cinzel', Georgia, serif;
-  --font-sans:    'Lato', 'Helvetica Neue', Arial, sans-serif;
+  /*
+   * ── TIPOGRAFÍAS ──────────────────────────────────
+   *
+   * TheBigmaker  → Títulos GRANDES y protagonistas:
+   *                nombres hero, headings de sección,
+   *                monograma, citas, footer monograma
+   *
+   * CormorantSC  → Todo lo demás con clase:
+   *                subtítulos, horas, nombres de eventos,
+   *                tags, fechas, datos bancarios
+   *
+   * Lato         → Textos pequeños funcionales:
+   *                párrafos, descripciones, labels,
+   *                botones, navegación
+   * ─────────────────────────────────────────────── */
+  --font-big:    'TheBigmaker', Georgia, serif;
+  --font-sc:     'CormorantSC', Georgia, serif;
+  --font-body:   'Lato', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Padding de sección — pequeño en móvil, crece con pantalla */
+  /* Aliases para compatibilidad con el código existente */
+  --font-display: var(--font-big);
+  --font-serif:   var(--font-sc);
+  --font-title:   var(--font-sc);
+  --font-sans:    var(--font-body);
+
+  /* Layout */
   --section-padding-y: clamp(3rem, 8vw, 6rem);
   --section-padding-x: clamp(1rem, 5vw, 3.5rem);
   --container-max:     1080px;
-
   --ease-silk: cubic-bezier(0.25, 0.4, 0.25, 1);
 }
 
@@ -41,18 +106,17 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  /* evita scroll horizontal */
   overflow-x: hidden;
 }
 
 body {
   background-color: var(--color-black);
   color: var(--color-ivory);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
+  font-size: 1rem;
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  /* evita que el tap en iOS resalte */
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -66,51 +130,60 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   padding-inline: var(--section-padding-x);
 }
 
-/* Texto de fondo decorativo */
+/* ─────────────────────────────────────────
+   COMPONENTES TIPOGRÁFICOS GLOBALES
+───────────────────────────────────────── */
+
+/* Tag pequeño sobre los títulos: "NUESTRA HISTORIA", "EL ITINERARIO"
+   → CormorantSC Medium, espaciado amplio */
+.section-tag {
+  font-family: var(--font-sc);
+  font-weight: 500;
+  font-size: clamp(0.65rem, 1.8vw, 0.78rem);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--color-gold-mid);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.section-tag.gold { color: var(--color-gold-light); }
+
+/* Título principal de cada sección
+   → TheBigmaker, grande, protagonista */
+.section-heading {
+  font-family: var(--font-big);
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+.section-heading.dark  { color: var(--color-black-soft); }
+.section-heading.light { color: var(--color-ivory); }
+
+/* Texto decorativo de fondo: "AMOR", "AMORE"
+   → CormorantSC Bold, muy grande, semitransparente */
 .section-bg-text {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-title);
-  font-size: clamp(4rem, 20vw, 16rem);
+  font-family: var(--font-sc);
   font-weight: 700;
-  letter-spacing: 0.25em;
+  font-size: clamp(4rem, 22vw, 18rem);
+  letter-spacing: 0.2em;
   color: rgba(212,175,106,0.04);
   pointer-events: none;
   user-select: none;
   overflow: hidden;
 }
 
-/* Tags de sección */
-.section-tag {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--color-gold-mid);
-  margin-bottom: 0.6rem;
-}
-.section-tag.gold { color: var(--color-gold-light); }
-
-/* Headings */
-.section-heading {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 6vw, 3.8rem);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.15;
-}
-.section-heading.dark  { color: var(--color-black-soft); }
-.section-heading.light { color: var(--color-ivory); }
-
 /* Ornamento divisor */
 .ornament {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin: 1rem 0 2rem;
+  margin: 0.8rem 0 1.8rem;
   justify-content: center;
 }
 .orn-line {
@@ -123,7 +196,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: linear-gradient(270deg, transparent, var(--color-gold-mid), transparent);
 }
 .orn-diamond {
-  font-size: 0.5rem;
+  font-size: 0.45rem;
   color: var(--color-gold-mid);
   letter-spacing: 0.3em;
 }
@@ -131,7 +204,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* Reveal on scroll */
 .reveal-up {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(22px);
   transition: opacity 0.7s var(--ease-silk), transform 0.7s var(--ease-silk);
   transition-delay: var(--delay, 0s);
 }
@@ -165,11 +238,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
 
 /* Bandera Colombia */
-.stripe-colombia {
-  display: flex;
-  height: 5px;
-  width: 100%;
-}
+.stripe-colombia { display: flex; height: 5px; width: 100%; }
 .sc-y { flex: 2; background: var(--col-yellow); }
 .sc-b { flex: 1; background: var(--col-blue); }
 .sc-r { flex: 1; background: var(--col-red); }

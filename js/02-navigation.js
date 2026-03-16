@@ -1,4 +1,7 @@
-/* 02-navigation.js  —  Navbar sticky · Menú móvil */
+/* ══════════════════════════════════════════════════════
+   02-navigation.js  —  Navbar sticky · Menú móvil
+   Fabián & Soffy · Boda 22 Marzo 2026
+══════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';

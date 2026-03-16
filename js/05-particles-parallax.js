@@ -1,4 +1,8 @@
-/* 05-particles-parallax.js  —  Partículas doradas */
+/* ══════════════════════════════════════════════════════
+   05-particles-parallax.js  —  Partículas doradas
+                                 Parallax del hero
+   Fabián & Soffy · Boda 22 Marzo 2026
+══════════════════════════════════════════════════════ */
 
 /* ════════════════ PARTÍCULAS ════════════════ */
 window.initParticles = (function () {
