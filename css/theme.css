@@ -1,0 +1,159 @@
+/*    Índice:
+   1. TIPOGRAFÍAS
+   2. COLORES
+   3. TAMAÑOS DE TEXTO
+   4. ESPACIADOS
+   5. IMÁGENES Y FONDOS
+   6. ANIMACIONES
+*/
+
+
+/* TIPOGRAFÍAS */
+:root {
+/* Fuente GRANDE — títulos, nombres, elementos protagonistas */
+  --font-big:   'TheBigmaker';
+
+/* Fuente ELEGANTE — subtítulos, fechas, lugares, datos */
+  --font-sc:    'CormorantSC';
+
+/* Fuente CUERPO — párrafos, descripciones, botones, labels */
+  --font-body:  'CoromorantSC', Arial, sans-serif;
+
+/* Aliases (no cambiar) */
+  --font-display: var(--font-big);
+  --font-serif:   var(--font-sc);
+  --font-title:   var(--font-sc);
+  --font-sans:    var(--font-body);
+}
+
+
+/*COLORES */
+:root {
+  /* Fondos oscuros */
+  --color-black:       #0d0a07;   /* fondo principal */
+  --color-black-soft:  #1a1510;   /* fondo secundario */
+  --color-black-card:  #13100c;   /* fondo modales */
+
+  /* Dorados — color principal de acento */
+  --color-gold:        #b8963e;   /* dorado base */
+  --color-gold-mid:    #d4af6a;   /* dorado medio */
+  --color-gold-light:  #e8d5a3;   /* dorado claro */
+  --color-gold-pale:   #f0e8d0;   /* dorado muy claro */
+
+  /* Cremas — fondos de secciones claras */
+  --color-ivory:       #f5f0e8;   /* crema principal */
+  --color-ivory-dark:  #ece5d8;   /* crema oscura */
+  --color-ivory-warm:  #f8f4ed;   /* crema cálida */
+
+  /* Complementarios */
+  --color-olive:       hsl(80, 15%, 38%);   /* verde oliva */
+  --color-olive-light: hsl(80, 12%, 52%);   /* verde oliva claro */
+
+  /* Bandera Colombia */
+  --col-yellow: #FCD116;
+  --col-blue:   #003087;
+  --col-red:    #CE1126;
+}
+
+
+/* TAMAÑOS DE TEXTO Formato: clamp(MÓVIL, FLUIDO, DESKTOP) cambiaR el primer y último número */
+:root {
+  /* ── HERO ── */
+  --size-hero-names:    clamp(9.0rem, 20vw, 13rem);  /* "Fabián" y "Soffy" */
+  --size-hero-amp:      clamp(1.5rem,  6vw,  3.5rem); /* "&" */
+  --size-hero-eyebrow:  clamp(0.55rem, 1.6vw, 0.72rem); /* "CON TUTTO L'AMORE..." */
+  --size-hero-date:     clamp(0.65rem, 2.5vw, 1rem);    /* "XXII · MARZO · MMXXVI" */
+  --size-hero-location: clamp(0.55rem, 1.5vw, 0.72rem); /* "Cúcuta, Colombia" */
+
+  /* ── TÍTULOS DE SECCIÓN ── */
+  --size-section-heading: clamp(4.0rem, 6vw, 6.7rem); /* "La Famiglia", "Il Gran Giorno"... */
+  --size-section-tag:     clamp(0.65rem, 1.8vw, 0.78rem); /* "NUESTRA HISTORIA"... */
+
+  /* ── CONTADOR ── */
+  --size-countdown-numbers: clamp(1.8rem, 7.5vw, 4.5rem); /* 160, 04, 33... */
+  --size-countdown-labels:  clamp(0.38rem, 1.1vw, 0.55rem); /* DÍAS, HORAS... */
+  --size-countdown-heading: clamp(2.2rem, 6vw, 4.2rem); /* "Faltan para el gran día" */
+
+  /* ── CITA ── */
+  --size-quote-text:   clamp(1.1rem, 4vw, 1.7rem);  /* el texto de la cita */
+  --size-quote-author: clamp(0.65rem, 1.8vw, 0.8rem); /* "— Mahatma Gandhi" */
+  --size-quote-mark:   clamp(4rem, 15vw, 10rem);    /* la comilla " grande */
+
+  /* ── HISTORIA / POLAROIDS ── */
+  --size-story-intro:   clamp(0.9rem, 2vw, 1.05rem);  /* párrafo intro */
+  --size-polaroid-caption: clamp(2.5rem, 1.8vw, 4.0rem); /* caption fotos */
+
+  /* ── ITINERARIO ── */
+  --size-itinerary-time:  clamp(1.5rem, 5vw, 2.4rem);  /* "5:00 PM" */
+  --size-itinerary-title: clamp(1.05rem, 2.8vw, 1.45rem); /* "La Ceremonia" */
+  --size-itinerary-place: clamp(0.6rem, 1.4vw, 0.72rem);  /* "Parroquia Cristo..." */
+  --size-itinerary-desc:  clamp(0.85rem, 2vw, 0.95rem);   /* descripción */
+
+  /* ── EVENTOS ── */
+  --size-event-name: clamp(2.8rem, 4.5vw, 3.8rem); /* "Santa Eucaristía" */
+  --size-event-time: clamp(1.1rem, 3vw, 1.4rem);   /* "5:00 PM" badge */
+  --size-event-type: 0.55rem;                       /* "LA CEREMONIA" label */
+  --size-event-detail-value: 0.84rem;               /* "Parroquia Cristo..." */
+
+  /* ── DRESS CODE ── */
+  --size-dresscode-subtitle: clamp(1.2rem, 3.5vw, 1.8rem); /* "Elegante Formal" */
+  --size-dresscode-desc:     clamp(0.9rem, 2vw, 1rem);      /* descripción */
+  --size-dresscode-card-h3:  1.05rem;                        /* "Ellas" / "Ellos" */
+  --size-dresscode-card-p:   0.86rem;                        /* texto de las cards */
+
+  /* ── REGALOS ── */
+  --size-gifts-text:     clamp(0.9rem, 2vw, 1.02rem); /* párrafos */
+  --size-gifts-bank-row: 0.84rem;                      /* datos bancarios */
+  --size-gifts-tagline:  clamp(1rem, 2.5vw, 1.2rem);  /* "Grazie mille..." */
+
+  /* ── RSVP ── */
+  --size-rsvp-heading:  clamp(5.0rem, 10vw, 5.5rem); /* "¿Nos acompañas?" */
+  --size-rsvp-subtitle: clamp(0.9rem, 2.2vw, 1.02rem); /* subtítulo */
+  --size-rsvp-deadline: clamp(0.7rem, 1.8vw, 0.85rem); /* fecha límite */
+  --size-rsvp-btn:      0.68rem;                        /* texto del botón */
+
+  /* ── FOOTER ── */
+  --size-footer-monogram: clamp(2rem, 6vw, 3.5rem);  /* "F & S" */
+  --size-footer-names:    0.6rem;                     /* "FABIÁN & SOFFY" */
+  --size-footer-date:     clamp(0.62rem, 1.5vw, 0.78rem); /* "22 · MARZO..." */
+  --size-footer-tagline:  clamp(0.9rem, 2vw, 1.1rem); /* "Con tutto il nostro amore" */
+
+  /* ── NAVEGACIÓN ── */
+  --size-nav-logo:  1.2rem;    /* "F & S" en la barra */
+  --size-nav-links: 0.6rem;    /* links desktop */
+  --size-nav-mobile-links: clamp(1.5rem, 5vw, 2.2rem); /* links menú móvil */
+}
+
+
+/* ESPACIADOS
+   Controla el espacio entre secciones y márgenes*/
+:root {
+  --space-section-y: clamp(3rem, 8vw, 6rem);   /* padding vertical secciones */
+  --space-section-x: clamp(1rem, 5vw, 3.5rem); /* padding horizontal secciones */
+  --space-container:  1080px;                   /* ancho máximo del contenido */
+}
+
+
+/* IMÁGENES Y FONDOS */
+:root {
+  /* Hero principal */
+  --img-hero: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1400&q=80&auto=format&fit=crop');
+
+  /* Sección de cita */
+  --img-quote: url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=70&auto=format&fit=crop');
+
+  /* Sección de eventos */
+  --img-events: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=60&auto=format&fit=crop');
+
+  /* Sección RSVP */
+  --img-rsvp: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1400&q=70&auto=format&fit=crop');
+}
+
+
+/* ANIMACIONES*/
+:root {
+  --ease-silk:      cubic-bezier(0.25, 0.4, 0.25, 1); /* curva general */
+  --anim-reveal:    0.7s;   /* duración del reveal-up al hacer scroll */
+  --anim-modal:     0.38s;  /* apertura del modal de mapas */
+  --anim-nav:       0.35s;  /* apertura del menú móvil */
+}

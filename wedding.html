@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#0d0a07"/>
   <title>Fabián &amp; Soffy — 22 Marzo 2026</title>
 
-  <!-- CSS -->
+  <!-- CSS: empieza por theme.css para configurar todo -->
+  <link rel="stylesheet" href="css/theme.css"/>
   <link rel="stylesheet" href="css/00-intro-envelope.css"/>
   <link rel="stylesheet" href="css/01-base.css"/>
   <link rel="stylesheet" href="css/03-navigation.css"/>
@@ -17,9 +18,7 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════
-     INTRO — Sobre con sello lacre + Video apertura
-══════════════════════════════════════════════════ -->
+<!-- INTRO — Sobre con sello lacre + Video apertura-->
 <div id="intro-overlay" role="presentation" aria-hidden="true">
 
   <!-- Fase 1: Imagen estática — espera click o 300s -->
@@ -56,8 +55,7 @@
 
 </div><!-- /intro-overlay -->
 
-     NAVEGACIÓN
-══════════════════════════════════════ -->
+     <!-- NAVEGACIÓN═ -->
 <nav id="navbar" class="navbar" role="navigation" aria-label="Menú principal">
   <a href="#hero" class="navbar-logo">F &amp; S</a>
 
@@ -85,9 +83,7 @@
   <a href="#rsvp">RSVP</a>
 </div>
 
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero film-grain" id="hero">
   <div class="hero-bg">
     <div class="hero-img-wrap">
@@ -101,11 +97,6 @@
     <div class="hero-overlay"></div>
     <div class="hero-vignette"></div>
   </div>
-
-  <svg class="hero-frame" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="3" y="3" width="94" height="94" fill="none" stroke="rgba(212,175,106,0.35)" stroke-width="0.4"/>
-    <rect x="5" y="5" width="90" height="90" fill="none" stroke="rgba(212,175,106,0.15)" stroke-width="0.2"/>
-  </svg>
 
   <div class="hero-content">
     <p class="hero-eyebrow reveal-up">Con tutto l'amore · os invitamos a celebrar</p>
@@ -123,7 +114,7 @@
       <span class="hero-divider-gem">◆</span>
       <div class="hero-divider-line"></div>
     </div>
-    <p class="hero-date reveal-up" style="--delay:0.7s">XXII · MARZO · MMXXVI</p>
+    <p class="hero-date reveal-up" style="--delay:0.7s">XXII · AGOSTO · MMXXVI</p>
     <p class="hero-location reveal-up" style="--delay:0.9s">Cúcuta, Colombia</p>
     <div class="hero-scroll reveal-up" style="--delay:1.1s">
       <span>Descubre</span>
@@ -136,15 +127,8 @@
   </div>
 </section>
 
-<!-- Franja Colombia -->
-<div class="stripe-colombia" aria-hidden="true">
-  <div class="sc-y"></div><div class="sc-y"></div>
-  <div class="sc-b"></div><div class="sc-r"></div>
-</div>
 
-<!-- ══════════════════════════════════════
-     CONTADOR REGRESIVO
-══════════════════════════════════════ -->
+<!-- CONTADOR REGRESIVO -->
 <section class="countdown-section" id="countdown">
   <div class="section-bg-text" aria-hidden="true">AMOR</div>
   <div class="container">
@@ -179,30 +163,8 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     CITA / QUOTE
-══════════════════════════════════════ -->
-<section class="quote-section">
-  <div class="quote-bg">
-    <img
-      src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=70&auto=format&fit=crop"
-      alt="flores"
-      loading="lazy"
-    />
-    <div class="quote-overlay"></div>
-  </div>
-  <div class="container quote-inner">
-    <span class="quote-mark" aria-hidden="true">"</span>
-    <blockquote class="quote-text reveal-up">
-      Dove c'è amore c'è vita — donde el amor habita, la vida florece.
-    </blockquote>
-    <p class="quote-author reveal-up" style="--delay:0.2s">— Mahatma Gandhi</p>
-  </div>
-</section>
 
-<!-- ══════════════════════════════════════
-     NUESTRA HISTORIA (sección del proyecto Lovable)
-══════════════════════════════════════ -->
+<!-- NUESTRA HISTORIA -->
 <section class="story-section" id="historia">
   <div class="container">
     <p class="section-tag reveal-up">Nuestra Historia</p>
@@ -221,7 +183,7 @@
     <div class="story-grid">
       <div class="polaroid reveal-up" style="--delay:0.1s">
         <img src="images/story-1.jpg" alt="Nuestra historia — primer encuentro" loading="lazy"/>
-        <p class="polaroid-caption">Donde todo comenzó — un café, dos miradas y una conversación infinita.</p>
+        <p class="polaroid-caption">Donde todo comenzó <br>Nuestra primera cita</p>
       </div>
       <div class="polaroid reveal-up" style="--delay:0.2s">
         <img src="images/story-2.jpg" alt="Nuestra historia — juntos" loading="lazy"/>
@@ -235,9 +197,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     ITINERARIO / TIMELINE (del proyecto Lovable)
-══════════════════════════════════════ -->
+<!-- ITINERARIO / TIMELINE -->
 <section class="itinerary-section" id="itinerario">
   <div class="container">
     <p class="section-tag reveal-up">El Itinerario</p>
@@ -299,9 +259,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     EVENTOS (Cards con mapa)
-══════════════════════════════════════ -->
+<!-- EVENTOS (Cards con mapa)-->
 <section class="events-section" id="eventos">
   <div class="events-bg">
     <img
@@ -465,15 +423,7 @@
   </div>
 </div>
 
-<!-- Franja Colombia -->
-<div class="stripe-colombia" aria-hidden="true">
-  <div class="sc-y"></div><div class="sc-y"></div>
-  <div class="sc-b"></div><div class="sc-r"></div>
-</div>
-
-<!-- ══════════════════════════════════════
-     DRESS CODE (del proyecto Lovable)
-══════════════════════════════════════ -->
+<!-- DRESS CODE  -->
 <section class="dresscode-section" id="dresscode">
   <div class="container">
     <p class="section-tag reveal-up">Código de Vestimenta</p>
@@ -521,9 +471,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     REGALOS / IL REGALO (del proyecto Lovable)
-══════════════════════════════════════ -->
+<!-- REGALOS / IL REGALO -->
 <section class="gifts-section" id="regalos">
   <div class="container">
     <!-- Ícono regalo SVG -->
@@ -578,9 +526,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     RSVP
-══════════════════════════════════════ -->
+<!--  RSVP-->
 <section class="rsvp-section" id="rsvp">
   <div class="rsvp-bg">
     <img
@@ -605,11 +551,13 @@
     </div>
     <div class="rsvp-btn-wrap reveal-up" style="--delay:0.45s">
       <a
-        href="https://lu.ma"
+        href="https://luma.com/event/evt-CUgCIZTFJmmuje2"
         target="_blank"
         rel="noopener"
         class="rsvp-btn ripple"
         id="rsvp-btn"
+        data-luma-action="checkout"
+        data-luma-event-id="evt-CUgCIZTFJmmuje2"
       >
         <span class="rsvp-btn-inner">
           <svg class="rsvp-btn-svg" viewBox="0 0 22 22" fill="none">
@@ -624,9 +572,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
+<!--FOOTER -->
 <footer class="footer">
   <div class="footer-deco" aria-hidden="true">
     <div class="footer-line"></div>
@@ -634,10 +580,9 @@
     <div class="footer-line"></div>
   </div>
   <div class="footer-monogram" aria-label="Fabián y Soffy">F <span>&amp;</span> S</div>
-  <p class="footer-names">Fabián Díaz &amp; Soffy Monsalve</p>
-  <p class="footer-date">22 · Marzo · 2026</p>
+  <p class="footer-names">Fabian Diaz &amp; Soffy Monsalve</p>
+  <p class="footer-date">22 · AGOSTO · 2026</p>
   <p class="footer-tagline">Con tutto il nostro amore — per sempre</p>
-  <div class="stripe-colombia footer-stripe" aria-hidden="true">
     <div class="sc-y"></div><div class="sc-y"></div>
     <div class="sc-b"></div><div class="sc-r"></div>
   </div>
@@ -653,6 +598,8 @@
 <script src="js/04-map-interactions.js"></script>
 <script src="js/05-particles-parallax.js"></script>
 <script src="js/02-navigation.js"></script>
+<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+
 
 </body>
 </html>

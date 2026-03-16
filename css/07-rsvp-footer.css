@@ -1,144 +1,75 @@
-/* ══════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════
    07-rsvp-footer.css  —  RSVP · Footer · Partículas
-   MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
+   ⚠ Tamaños y colores en theme.css
+════════════════════════════════════════════════════════════ */
 
-   TheBigmaker  → heading RSVP, monograma footer
-   CormorantSC  → fecha límite, fecha footer
-   Lato         → subtítulo, botón, nota, nombres footer
-══════════════════════════════════════════════════════ */
-
-/* ══ RSVP ══ */
+/* ── RSVP ── */
 .rsvp-section {
   position: relative; min-height: 65vh;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden; text-align: center;
-  padding: clamp(3.5rem, 10vw, 6rem) var(--section-padding-x);
+  padding: var(--space-section-y) var(--space-section-x);
 }
 .rsvp-bg { position: absolute; inset: 0; }
 .rsvp-bg img { width: 100%; height: 100%; object-fit: cover; }
-.rsvp-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(13,10,7,0.55) 0%, rgba(13,10,7,0.72) 100%);
-}
+.rsvp-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,10,7,0.55) 0%, rgba(13,10,7,0.72) 100%); }
 
-.rsvp-inner {
-  position: relative; z-index: 2;
-  max-width: 620px; margin-inline: auto; width: 100%;
-}
+.rsvp-inner { position: relative; z-index: 2; max-width: 620px; margin-inline: auto; width: 100%; }
 
-/* "Confirma tu asistencia" → TheBigmaker grande */
-.rsvp-inner .section-heading {
-  font-size: clamp(2.5rem, 10vw, 5.5rem);
-  margin-bottom: 0.4rem;
-}
+/* ★ --size-rsvp-heading en theme.css */
+.rsvp-inner .section-heading { font-size: var(--size-rsvp-heading); margin-bottom: 0.4rem; }
 
-/* Subtítulo → Lato */
-.rsvp-subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(0.9rem, 2.2vw, 1.02rem);
-  color: rgba(245,240,232,0.68); line-height: 1.7; margin: 0.8rem 0;
-}
+/* ★ --size-rsvp-subtitle en theme.css */
+.rsvp-subtitle { font-family: var(--font-body); font-size: var(--size-rsvp-subtitle); color: rgba(245,240,232,0.68); line-height: 1.7; margin: 0.8rem 0; }
 
-/* Fecha límite → CormorantSC */
+/* ★ --size-rsvp-deadline en theme.css */
 .rsvp-deadline {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--font-sc);
-  font-weight: 500;
-  font-size: clamp(0.7rem, 1.8vw, 0.85rem);
-  letter-spacing: 0.1em;
-  color: rgba(245,240,232,0.5);
-  border: 1px solid rgba(212,175,106,0.2);
-  padding: 0.6rem 1rem; margin: 1rem 0;
+  font-family: var(--font-sc); font-weight: 500; font-size: var(--size-rsvp-deadline);
+  letter-spacing: 0.1em; color: rgba(245,240,232,0.5);
+  border: 1px solid rgba(212,175,106,0.2); padding: 0.6rem 1rem; margin: 1rem 0;
   flex-wrap: wrap; justify-content: center; line-height: 1.5;
 }
 .rsvp-deadline strong { color: var(--color-gold-light); font-weight: 600; }
-.deadline-svg {
-  width: 13px; height: 13px;
-  stroke: currentColor; fill: none; stroke-width: 1.2; opacity: 0.55; flex-shrink: 0;
-}
+.deadline-svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.2; opacity: 0.55; flex-shrink: 0; }
 
 .rsvp-btn-wrap { margin-top: 1.8rem; }
 
-/* Botón CONFIRMAR → Lato Bold */
+/* ★ --size-rsvp-btn en theme.css */
 .rsvp-btn {
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 1rem 1.5rem;
-  background: var(--color-gold); color: var(--color-black);
-  font-family: var(--font-body);
-  font-size: 0.68rem; font-weight: 700;
+  padding: 1rem 1.5rem; background: var(--color-gold); color: var(--color-black);
+  font-family: var(--font-body); font-size: var(--size-rsvp-btn); font-weight: 700;
   letter-spacing: 0.3em; text-transform: uppercase;
-  transition: background 0.35s, transform 0.2s;
-  min-height: 54px; width: 100%; max-width: 300px;
+  transition: background 0.35s, transform 0.2s; min-height: 54px; width: 100%; max-width: 300px;
 }
 @media (min-width: 400px) { .rsvp-btn { padding: 1rem 2.5rem; width: auto; max-width: none; } }
 .rsvp-btn:hover { background: var(--color-gold-mid); transform: translateY(-2px); }
 .rsvp-btn:active { transform: translateY(0); }
 .rsvp-btn-inner { display: flex; align-items: center; gap: 0.6rem; }
 .rsvp-btn-svg { width: 14px; height: 14px; stroke: currentColor; fill: none; flex-shrink: 0; }
+.rsvp-note { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,240,232,0.24); margin-top: 0.9rem; }
 
-/* Nota inferior → Lato */
-.rsvp-note {
-  font-family: var(--font-body);
-  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(245,240,232,0.24); margin-top: 0.9rem;
-}
-
-/* ══ FOOTER ══ */
-.footer {
-  background: var(--color-black);
-  padding: 2.5rem var(--section-padding-x) 1.5rem;
-  text-align: center;
-  border-top: 1px solid rgba(212,175,106,0.1);
-}
-.footer-deco {
-  display: flex; align-items: center; justify-content: center;
-  gap: 0.8rem; margin-bottom: 1.5rem;
-}
+/* ── FOOTER ── */
+.footer { background: var(--color-black); padding: 2.5rem var(--space-section-x) 1.5rem; text-align: center; border-top: 1px solid rgba(212,175,106,0.1); }
+.footer-deco { display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-bottom: 1.5rem; }
 .footer-line { width: 50px; height: 1px; background: linear-gradient(90deg, transparent, rgba(212,175,106,0.28)); }
 .footer-line + .footer-diamond + .footer-line { background: linear-gradient(270deg, transparent, rgba(212,175,106,0.28)); }
 .footer-diamond { font-size: 0.4rem; color: var(--color-gold-mid); opacity: 0.45; }
 
-/* Monograma "F & S" → TheBigmaker */
-.footer-monogram {
-  font-family: var(--font-big);
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  color: var(--color-gold-mid);
-  letter-spacing: 0.08em; margin-bottom: 0.4rem;
-}
-.footer-monogram span {
-  font-family: var(--font-sc);
-  font-weight: 300;
-  font-size: 0.6em;
-  vertical-align: middle; margin-inline: 0.25em;
-  color: var(--color-gold-light);
-}
+/* ★ --size-footer-monogram en theme.css */
+.footer-monogram { font-family: var(--font-big); font-size: var(--size-footer-monogram); color: var(--color-gold-mid); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+.footer-monogram span { font-family: var(--font-sc); font-weight: 300; font-size: 0.6em; vertical-align: middle; margin-inline: 0.25em; color: var(--color-gold-light); }
 
-/* "FABIÁN DÍAZ & SOFFY MONSALVE" → Lato */
-.footer-names {
-  font-family: var(--font-body);
-  font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: rgba(245,240,232,0.38); margin-bottom: 0.3rem;
-}
+/* ★ --size-footer-names en theme.css */
+.footer-names { font-family: var(--font-body); font-size: var(--size-footer-names); letter-spacing: 0.28em; text-transform: uppercase; color: rgba(245,240,232,0.38); margin-bottom: 0.3rem; }
 
-/* "22 · MARZO · MMXXVI" → CormorantSC */
-.footer-date {
-  font-family: var(--font-sc);
-  font-weight: 500;
-  font-size: clamp(0.62rem, 1.5vw, 0.78rem);
-  letter-spacing: 0.38em;
-  color: var(--color-gold-mid); opacity: 0.6; margin-bottom: 0.4rem;
-}
+/* ★ --size-footer-date en theme.css */
+.footer-date { font-family: var(--font-sc); font-weight: 500; font-size: var(--size-footer-date); letter-spacing: 0.38em; color: var(--color-gold-mid); opacity: 0.6; margin-bottom: 0.4rem; }
 
-/* Tagline → TheBigmaker pequeño */
-.footer-tagline {
-  font-family: var(--font-big);
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  color: rgba(245,240,232,0.18); margin-bottom: 1.5rem;
-}
+/* ★ --size-footer-tagline en theme.css */
+.footer-tagline { font-family: var(--font-big); font-size: var(--size-footer-tagline); color: rgba(245,240,232,0.18); margin-bottom: 1.5rem; }
 .footer-stripe { height: 4px; margin-top: 1.5rem; }
 
-/* ══ PARTÍCULAS ══ */
-.particles-canvas {
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none; opacity: 0.35;
-}
+/* ── PARTÍCULAS ── */
+.particles-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.35; }

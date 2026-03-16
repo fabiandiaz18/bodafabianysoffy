@@ -1,18 +1,12 @@
-/* ══════════════════════════════════════════════════════
-   04-hero-countdown.css  —  Hero · Contador regresivo
-   MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
+/* ════════════════════════════════════════════════════════════
+   04-hero-countdown.css  —  Hero · Contador
+   ⚠ Tamaños y colores en theme.css
+════════════════════════════════════════════════════════════ */
 
-   TheBigmaker  → nombres Fabián & Soffy, & ampersand
-   CormorantSC  → eyebrow, fecha, ubicación, labels
-   Lato         → scroll hint
-══════════════════════════════════════════════════════ */
-
+/* ── HERO ── */
 .hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative; min-height: 100svh;
+  display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
@@ -41,78 +35,51 @@
 
 .hero-content {
   position: relative; z-index: 3;
-  text-align: center;
-  padding: 5rem 1.2rem 2.5rem;
-  width: 100%;
+  text-align: center; padding: 5rem 1.2rem 2.5rem; width: 100%;
 }
 @media (min-width: 480px) { .hero-content { padding: 6rem 2rem 3rem; } }
 
-/* "CON TUTTO L'AMORE · OS INVITAMOS A CELEBRAR"
-   → CormorantSC Medium, espaciado alto */
 .hero-eyebrow {
-  font-family: var(--font-sc);
-  font-weight: 500;
-  font-size: clamp(0.55rem, 1.6vw, 0.72rem);
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
+  font-family: var(--font-sc); font-weight: 500;
+  font-size: var(--size-hero-eyebrow);
+  letter-spacing: 0.38em; text-transform: uppercase;
   color: rgba(232,213,163,0.7);
-  margin-bottom: 1.6rem;
 }
 
-/* Nombres — columna en móvil, fila en tablet+ */
 .hero-names-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
 }
 @media (min-width: 480px) {
-  .hero-names-wrap {
-    flex-direction: row;
-    justify-content: center;
-    gap: clamp(1rem, 3vw, 3rem);
-  }
+  .hero-names-wrap { flex-direction: row; justify-content: center; gap: clamp(1rem, 3vw, 3rem); }
 }
 
-/* "Fabián" y "Soffy"
-   → TheBigmaker, protagonistas absolutos */
+/* ★ Tamaño de "Fabián" y "Soffy": --size-hero-names en theme.css */
 .hero-name-1, .hero-name-2 {
-  font-family: var(--font-big);
-  font-size: clamp(4.5rem, 20vw, 13rem);
-  font-weight: 400;
-  color: var(--color-ivory);
-  line-height: 1;
-  letter-spacing: 0.01em;
+  font-family: var(--font-big); font-weight: 400;
+  font-size: var(--size-hero-names);
+  color: var(--color-ivory); line-height: 1;
 }
 
-/* "&"
-   → CormorantSC, complementario */
 .hero-amp-wrap {
-  display: flex; flex-direction: row;
-  align-items: center; gap: 0.8rem;
-  margin: 0.2rem 0;
+  display: flex; flex-direction: row; align-items: center; gap: 0.8rem; margin: 0.2rem 0;
 }
-@media (min-width: 480px) {
-  .hero-amp-wrap { flex-direction: column; gap: 0.5rem; margin: 0; }
-}
-.hero-amp-line {
-  width: 1.2rem; height: 1px;
-  background: rgba(212,175,106,0.35);
-}
+@media (min-width: 480px) { .hero-amp-wrap { flex-direction: column; gap: 0.5rem; margin: 0; } }
+
+.hero-amp-line { width: 1.2rem; height: 1px; background: rgba(212,175,106,0.35); }
 @media (min-width: 480px) {
   .hero-amp-line {
     width: 1px; height: 2.2rem;
     background: linear-gradient(180deg, transparent, var(--color-gold-mid), transparent);
   }
 }
+
+/* ★ Tamaño del "&": --size-hero-amp en theme.css */
 .hero-amp {
-  font-family: var(--font-sc);
-  font-weight: 300;
-  font-size: clamp(1.5rem, 6vw, 3.5rem);
+  font-family: var(--font-sc); font-weight: 300;
+  font-size: var(--size-hero-amp);
   color: var(--color-gold-mid);
 }
 
-/* Divider decorativo */
 .hero-divider {
   display: flex; align-items: center; justify-content: center;
   gap: 0.7rem; margin: 1rem auto; max-width: 180px;
@@ -121,35 +88,25 @@
 .hero-divider-line { flex: 1; height: 1px; background: rgba(212,175,106,0.28); }
 .hero-divider-gem  { font-size: 0.4rem; color: var(--color-gold-mid); }
 
-/* "XXII · MARZO · MMXXVI"
-   → CormorantSC SemiBold, espaciado romano */
+/* ★ Tamaño de la fecha: --size-hero-date en theme.css */
 .hero-date {
-  font-family: var(--font-sc);
-  font-weight: 600;
-  font-size: clamp(0.65rem, 2.5vw, 1rem);
-  letter-spacing: 0.42em;
-  color: var(--color-gold-light);
+  font-family: var(--font-sc); font-weight: 600;
+  font-size: var(--size-hero-date);
+  letter-spacing: 0.42em; color: var(--color-gold-light);
 }
 
-/* "CÚCUTA, COLOMBIA"
-   → CormorantSC Regular */
+/* ★ Tamaño de la ubicación: --size-hero-location en theme.css */
 .hero-location {
-  font-family: var(--font-sc);
-  font-weight: 400;
-  font-size: clamp(0.55rem, 1.5vw, 0.72rem);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.45);
-  margin-top: 0.35rem;
+  font-family: var(--font-sc); font-weight: 400;
+  font-size: var(--size-hero-location);
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(245,240,232,0.45); margin-top: 0.35rem;
 }
 
-/* "DESCUBRE ↓"
-   → Lato, funcional */
 .hero-scroll {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 0.45rem; margin-top: 2.5rem;
-  font-family: var(--font-body);
-  font-size: 0.55rem;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.45rem; margin-top: 2.5rem;
+  font-family: var(--font-body); font-size: 0.55rem;
   letter-spacing: 0.3em; text-transform: uppercase;
   color: rgba(245,240,232,0.28);
 }
@@ -159,17 +116,11 @@
   50%       { transform: translateY(6px); }
 }
 
-/* ══ COUNTDOWN ══════════════════════════════════════
-   TheBigmaker  → "Faltan para el gran día" (heading)
-   CormorantSC  → números, labels (DÍAS, HORAS…)
-   Lato         → tag "IL CONTO ALLA ROVESCIA"
-══════════════════════════════════════════════════ */
+/* ── COUNTDOWN ── */
 .countdown-section {
-  position: relative;
-  background: var(--color-ivory-warm);
-  padding: clamp(3rem, 8vw, 6rem) var(--section-padding-x);
-  text-align: center;
-  overflow: hidden;
+  position: relative; background: var(--color-ivory-warm);
+  padding: var(--space-section-y) var(--space-section-x);
+  text-align: center; overflow: hidden;
 }
 .countdown-section .section-tag    { color: var(--color-gold); }
 .countdown-section .section-heading { color: var(--color-black-soft); }
@@ -182,20 +133,12 @@
 .cd-ornament span { font-size: 0.45rem; color: var(--color-gold-mid); }
 
 .countdown-grid {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  display: flex; align-items: flex-end; justify-content: center;
   gap: clamp(0.15rem, 1.8vw, 1.2rem);
-  flex-wrap: nowrap;
-  margin-top: 1.8rem;
+  flex-wrap: nowrap; margin-top: 1.8rem;
 }
-.cd-unit {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 0.5rem;
-  min-width: 0;
-}
+.cd-unit { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; min-width: 0; }
 
-/* Recuadro con esquinas doradas */
 .cd-box {
   position: relative;
   padding: clamp(0.5rem, 1.6vw, 1.2rem) clamp(0.4rem, 1.8vw, 1.6rem);
@@ -203,33 +146,26 @@
   background: rgba(13,10,7,0.025);
 }
 .cd-box::before, .cd-box::after {
-  content: ''; position: absolute;
-  width: 6px; height: 6px;
+  content: ''; position: absolute; width: 6px; height: 6px;
   border-color: var(--color-gold); border-style: solid;
 }
 .cd-box::before { top: -1px; left: -1px;    border-width: 1.5px 0 0 1.5px; }
 .cd-box::after  { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
 
-/* Números: 160, 04, 33, 20
-   → CormorantSC Light, elegante */
+/* ★ Tamaño números del contador: --size-countdown-numbers en theme.css */
 .cd-box span {
-  font-family: var(--font-sc);
-  font-weight: 300;
-  font-size: clamp(1.8rem, 7.5vw, 4.5rem);
-  color: var(--color-black);
-  line-height: 1; min-width: 2ch;
-  display: block; text-align: center;
+  font-family: var(--font-sc); font-weight: 300;
+  font-size: var(--size-countdown-numbers);
+  color: var(--color-black); line-height: 1;
+  min-width: 2ch; display: block; text-align: center;
 }
 
-/* Labels: DÍAS, HORAS, MINUTOS, SEGUNDOS
-   → CormorantSC Medium */
+/* ★ Tamaño labels DÍAS, HORAS…: --size-countdown-labels en theme.css */
 .cd-label {
-  font-family: var(--font-sc);
-  font-weight: 500;
-  font-size: clamp(0.38rem, 1.1vw, 0.55rem);
+  font-family: var(--font-sc); font-weight: 500;
+  font-size: var(--size-countdown-labels);
   letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--color-gold);
-  white-space: nowrap;
+  color: var(--color-gold); white-space: nowrap;
 }
 
 .cd-sep {

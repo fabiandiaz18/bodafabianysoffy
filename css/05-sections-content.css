@@ -1,81 +1,63 @@
-/* ══════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════
    05-sections-content.css  —  Quote · Historia · Itinerario
-   MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
+   ⚠ Tamaños y colores en theme.css
+════════════════════════════════════════════════════════════ */
 
-   TheBigmaker  → cita, títulos grandes de sección
-   CormorantSC  → horas, nombres de evento, subtítulos
-   Lato         → descripciones, párrafos, lugares
-══════════════════════════════════════════════════════ */
-
-/* ══ QUOTE ══ */
+/* ── QUOTE ── */
 .quote-section {
   position: relative;
-  padding: clamp(3rem, 10vw, 7rem) var(--section-padding-x);
+  padding: var(--space-section-y) var(--space-section-x);
   overflow: hidden; text-align: center;
 }
 .quote-bg { position: absolute; inset: 0; }
 .quote-bg img { width: 100%; height: 100%; object-fit: cover; }
-.quote-overlay {
-  position: absolute; inset: 0;
-  background: rgba(13,10,7,0.76);
-}
-.quote-inner {
-  position: relative; z-index: 2;
-  max-width: 700px; margin-inline: auto;
-}
+.quote-overlay { position: absolute; inset: 0; background: rgba(13,10,7,0.76); }
+.quote-inner { position: relative; z-index: 2; max-width: 700px; margin-inline: auto; }
 
-/* Comilla decorativa → TheBigmaker */
+/* ★ Tamaño comilla: --size-quote-mark en theme.css */
 .quote-mark {
-  display: block;
-  font-family: var(--font-big);
-  font-size: clamp(4rem, 15vw, 10rem);
+  display: block; font-family: var(--font-big);
+  font-size: var(--size-quote-mark);
   color: var(--color-gold-mid); opacity: 0.18;
   line-height: 0.55; margin-bottom: 1rem;
 }
 
-/* Texto de la cita → TheBigmaker, grande */
+/* ★ Tamaño texto cita: --size-quote-text en theme.css */
 .quote-text {
   font-family: var(--font-big);
-  font-size: clamp(1.1rem, 4vw, 1.7rem);
-  color: var(--color-ivory);
-  line-height: 1.6; margin-bottom: 1rem;
+  font-size: var(--size-quote-text);
+  color: var(--color-ivory); line-height: 1.6; margin-bottom: 1rem;
 }
 
-/* Autor → CormorantSC Medium */
+/* ★ Tamaño autor: --size-quote-author en theme.css */
 .quote-author {
-  font-family: var(--font-sc);
-  font-weight: 500;
-  font-size: clamp(0.65rem, 1.8vw, 0.8rem);
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
+  font-family: var(--font-sc); font-weight: 500;
+  font-size: var(--size-quote-author);
+  letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--color-gold-mid); opacity: 0.72;
 }
 
-/* ══ NUESTRA HISTORIA ══ */
+/* ── NUESTRA HISTORIA ── */
 .story-section {
   background: var(--color-ivory-warm);
-  padding: clamp(3rem, 8vw, 6rem) var(--section-padding-x);
+  padding: var(--space-section-y) var(--space-section-x);
   text-align: center;
 }
 .story-section .section-tag    { color: var(--color-olive-light); }
 .story-section .section-heading { color: var(--color-black-soft); }
 
-/* Párrafo intro → Lato, cuerpo de texto */
+/* ★ Tamaño párrafo intro: --size-story-intro en theme.css */
 .story-intro {
   font-family: var(--font-body);
-  color: rgba(13,10,7,0.55);
-  font-size: clamp(0.9rem, 2vw, 1.05rem);
-  line-height: 1.85; max-width: 560px;
-  margin: 0.8rem auto 2.2rem;
+  font-size: var(--size-story-intro);
+  color: rgba(13,10,7,0.55); line-height: 1.85;
+  max-width: 560px; margin: 0.8rem auto 2.2rem;
 }
 
-/* Grid de polaroids */
+/* Grid polaroids: 1 col → 2 → 3 */
 .story-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  max-width: 880px;
-  margin-inline: auto;
+  display: grid; grid-template-columns: 1fr; gap: 2rem;
+  max-width: 880px; margin-inline: auto;
 }
 @media (min-width: 520px) { .story-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 780px) { .story-grid { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
@@ -97,38 +79,33 @@
   }
 }
 .polaroid img {
-  width: 100%; aspect-ratio: 1;
-  object-fit: cover;
-  filter: grayscale(18%) sepia(12%);
-  display: block;
+  width: 100%; aspect-ratio: 1; object-fit: cover;
+  filter: grayscale(18%) sepia(12%); display: block;
 }
 
-/* Caption polaroid → TheBigmaker, pequeño cursivo */
+/* ★ Tamaño caption fotos: --size-polaroid-caption en theme.css */
 .polaroid-caption {
   font-family: var(--font-big);
-  font-size: clamp(0.72rem, 1.8vw, 0.88rem);
+  font-size: var(--size-polaroid-caption);
   color: rgba(13,10,7,0.48);
   text-align: center; margin-top: 0.7rem;
-  line-height: 1.5; padding: 0 0.25rem;
+  line-height: 0.9; padding: 0 0.25rem;
 }
 
-/* ══ ITINERARIO ══ */
+/* ── ITINERARIO ── */
 .itinerary-section {
   background: var(--color-ivory-dark);
-  padding: clamp(3rem, 8vw, 6rem) var(--section-padding-x);
+  padding: var(--space-section-y) var(--space-section-x);
   text-align: center;
 }
 .itinerary-section .section-tag    { color: var(--color-olive-light); }
 .itinerary-section .section-heading { color: var(--color-black-soft); }
 
 .itinerary-timeline {
-  position: relative;
-  max-width: 820px;
-  margin: 2.2rem auto 0;
+  position: relative; max-width: 820px; margin: 2.2rem auto 0;
 }
 .itinerary-timeline::before {
-  content: '';
-  position: absolute;
+  content: ''; position: absolute;
   left: 20px; top: 0; bottom: 0; width: 1px;
   background: linear-gradient(180deg,
     transparent, rgba(184,150,62,0.3) 10%,
@@ -138,78 +115,64 @@
   .itinerary-timeline::before { left: 50%; transform: translateX(-50%); }
 }
 
-/* MÓVIL: grid ícono | contenido */
+/* MÓVIL: ícono izquierda, contenido derecha */
 .itinerary-item {
   display: grid;
   grid-template-columns: 42px 1fr;
   grid-template-areas: "icon content";
-  align-items: start;
-  column-gap: 1rem;
-  margin-bottom: 2.8rem;
-  text-align: left;
+  align-items: start; column-gap: 1rem;
+  margin-bottom: 2.8rem; text-align: left;
 }
 .itinerary-spacer { display: none; }
 
 .itinerary-icon {
   grid-area: icon;
-  width: 42px; height: 42px;
-  border-radius: 50%;
+  width: 42px; height: 42px; border-radius: 50%;
   border: 1.5px solid rgba(184,150,62,0.38);
   background: var(--color-ivory-warm);
   display: flex; align-items: center; justify-content: center;
-  position: relative; z-index: 2;
-  margin-top: 0.2rem;
+  position: relative; z-index: 2; margin-top: 0.2rem;
 }
 .itinerary-icon svg {
-  width: 20px; height: 20px;
-  color: var(--color-olive);
+  width: 20px; height: 20px; color: var(--color-olive);
   stroke: currentColor; fill: none;
   stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
 }
 .itinerary-content { grid-area: content; min-width: 0; }
 
-/* Hora: "5:00 PM" → TheBigmaker, protagonista */
+/* ★ Tamaño hora "5:00 PM": --size-itinerary-time en theme.css */
 .itinerary-time {
   font-family: var(--font-big);
-  font-size: clamp(1.5rem, 5vw, 2.4rem);
-  color: var(--color-gold);
-  margin-bottom: 0.08rem; line-height: 1.05;
+  font-size: var(--size-itinerary-time);
+  color: var(--color-gold); margin-bottom: 0.08rem; line-height: 1.05;
 }
 
-/* Nombre evento: "La Ceremonia" → CormorantSC SemiBold */
+/* ★ Tamaño nombre evento "La Ceremonia": --size-itinerary-title en theme.css */
 .itinerary-title {
-  font-family: var(--font-sc);
-  font-weight: 600;
-  font-size: clamp(1.05rem, 2.8vw, 1.45rem);
-  color: var(--color-black-soft);
-  margin-bottom: 0.1rem;
+  font-family: var(--font-sc); font-weight: 600;
+  font-size: var(--size-itinerary-title);
+  color: var(--color-black-soft); margin-bottom: 0.1rem;
 }
 
-/* Lugar: "PARROQUIA CRISTO…" → CormorantSC Medium */
+/* ★ Tamaño lugar "Parroquia…": --size-itinerary-place en theme.css */
 .itinerary-place {
-  font-family: var(--font-sc);
-  font-weight: 500;
-  font-size: clamp(0.6rem, 1.4vw, 0.72rem);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-family: var(--font-sc); font-weight: 500;
+  font-size: var(--size-itinerary-place);
+  letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--color-olive-light); margin-bottom: 0.45rem;
 }
 
-/* Descripción → Lato */
+/* ★ Tamaño descripción: --size-itinerary-desc en theme.css */
 .itinerary-desc {
   font-family: var(--font-body);
-  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-size: var(--size-itinerary-desc);
   color: rgba(13,10,7,0.52); line-height: 1.7;
 }
 
-/* DESKTOP: flex alternado */
+/* DESKTOP: alternado */
 @media (min-width: 640px) {
   .itinerary-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2.5rem;
-    text-align: left;
+    display: flex; flex-direction: row; align-items: center; gap: 2.5rem; text-align: left;
   }
   .itinerary-icon { flex: 0 0 50px; width: 50px; height: 50px; margin-top: 0; }
   .itinerary-content { flex: 1; }

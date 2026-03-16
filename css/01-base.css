@@ -1,106 +1,42 @@
-/* ══════════════════════════════════════════════════════
-   01-base.css  —  Variables · Reset · Tipografía
-   MOBILE FIRST — Fabián & Soffy · Boda 22 Marzo 2026
-══════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════
+   01-base.css  —  Fuentes · Reset · Componentes globales
+   ⚠ Para cambiar diseño edita theme.css, no este archivo
+════════════════════════════════════════════════════════════ */
 
 /* ── Fuentes locales ── */
 @font-face {
   font-family: 'CormorantSC';
   src: url('../fonts/CormorantSC-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 300; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'CormorantSC';
   src: url('../fonts/CormorantSC-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'CormorantSC';
   src: url('../fonts/CormorantSC-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 500; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'CormorantSC';
   src: url('../fonts/CormorantSC-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 600; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'CormorantSC';
   src: url('../fonts/CormorantSC-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 700; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'TheBigmaker';
   src: url('../fonts/TheBigmaker.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 400; font-style: normal; font-display: swap;
 }
-
-/* ── Google Fonts de respaldo ── */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-:root {
-  /* Colores */
-  --color-black:       #0d0a07;
-  --color-black-soft:  #1a1510;
-  --color-black-card:  #13100c;
-  --color-gold:        #b8963e;
-  --color-gold-mid:    #d4af6a;
-  --color-gold-light:  #e8d5a3;
-  --color-gold-pale:   #f0e8d0;
-  --color-ivory:       #f5f0e8;
-  --color-ivory-dark:  #ece5d8;
-  --color-ivory-warm:  #f8f4ed;
-  --color-olive:       hsl(80, 15%, 38%);
-  --color-olive-light: hsl(80, 12%, 52%);
-  --color-terracotta:  hsl(16, 40%, 62%);
-  --col-yellow: #FCD116;
-  --col-blue:   #003087;
-  --col-red:    #CE1126;
-
-  /*
-   * ── TIPOGRAFÍAS ──────────────────────────────────
-   *
-   * TheBigmaker  → Títulos GRANDES y protagonistas:
-   *                nombres hero, headings de sección,
-   *                monograma, citas, footer monograma
-   *
-   * CormorantSC  → Todo lo demás con clase:
-   *                subtítulos, horas, nombres de eventos,
-   *                tags, fechas, datos bancarios
-   *
-   * Lato         → Textos pequeños funcionales:
-   *                párrafos, descripciones, labels,
-   *                botones, navegación
-   * ─────────────────────────────────────────────── */
-  --font-big:    'TheBigmaker', Georgia, serif;
-  --font-sc:     'CormorantSC', Georgia, serif;
-  --font-body:   'Lato', 'Helvetica Neue', Arial, sans-serif;
-
-  /* Aliases para compatibilidad con el código existente */
-  --font-display: var(--font-big);
-  --font-serif:   var(--font-sc);
-  --font-title:   var(--font-sc);
-  --font-sans:    var(--font-body);
-
-  /* Layout */
-  --section-padding-y: clamp(3rem, 8vw, 6rem);
-  --section-padding-x: clamp(1rem, 5vw, 3.5rem);
-  --container-max:     1080px;
-  --ease-silk: cubic-bezier(0.25, 0.4, 0.25, 1);
-}
-
+/* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -108,38 +44,31 @@ html {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
 }
-
 body {
-  background-color: var(--color-black);
+  background: var(--color-black);
   color: var(--color-ivory);
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
 }
-
-img { display: block; max-width: 100%; height: auto; }
-a   { text-decoration: none; color: inherit; }
+img    { display: block; max-width: 100%; height: auto; }
+a      { text-decoration: none; color: inherit; }
 button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .container {
-  max-width: var(--container-max);
+  max-width: var(--space-container);
   margin-inline: auto;
-  padding-inline: var(--section-padding-x);
+  padding-inline: var(--space-section-x);
 }
 
-/* ─────────────────────────────────────────
-   COMPONENTES TIPOGRÁFICOS GLOBALES
-───────────────────────────────────────── */
+/* ── Componentes tipográficos globales ── */
 
-/* Tag pequeño sobre los títulos: "NUESTRA HISTORIA", "EL ITINERARIO"
-   → CormorantSC Medium, espaciado amplio */
+/* Tag encima del título: "NUESTRA HISTORIA" */
 .section-tag {
   font-family: var(--font-sc);
   font-weight: 500;
-  font-size: clamp(0.65rem, 1.8vw, 0.78rem);
+  font-size: var(--size-section-tag);
   letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--color-gold-mid);
@@ -148,88 +77,64 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 .section-tag.gold { color: var(--color-gold-light); }
 
-/* Título principal de cada sección
-   → TheBigmaker, grande, protagonista */
+/* Título principal de sección */
 .section-heading {
   font-family: var(--font-big);
-  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-size: var(--size-section-heading);
   font-weight: 400;
   line-height: 1.1;
-  letter-spacing: 0.01em;
 }
 .section-heading.dark  { color: var(--color-black-soft); }
 .section-heading.light { color: var(--color-ivory); }
 
-/* Texto decorativo de fondo: "AMOR", "AMORE"
-   → CormorantSC Bold, muy grande, semitransparente */
+/* Texto decorativo de fondo "AMOR" */
 .section-bg-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
   font-family: var(--font-sc);
   font-weight: 700;
   font-size: clamp(4rem, 22vw, 18rem);
   letter-spacing: 0.2em;
   color: rgba(212,175,106,0.04);
-  pointer-events: none;
-  user-select: none;
-  overflow: hidden;
+  pointer-events: none; user-select: none; overflow: hidden;
 }
 
-/* Ornamento divisor */
+/* Ornamento divisor ── ❦ ── */
 .ornament {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin: 0.8rem 0 1.8rem;
-  justify-content: center;
+  display: flex; align-items: center; gap: 0.8rem;
+  margin: 0.8rem 0 1.8rem; justify-content: center;
 }
 .orn-line {
-  flex: 1;
-  height: 1px;
+  flex: 1; height: 1px; max-width: 100px;
   background: linear-gradient(90deg, transparent, var(--color-gold-mid), transparent);
-  max-width: 100px;
 }
 .orn-line.right {
   background: linear-gradient(270deg, transparent, var(--color-gold-mid), transparent);
 }
-.orn-diamond {
-  font-size: 0.45rem;
-  color: var(--color-gold-mid);
-  letter-spacing: 0.3em;
-}
+.orn-diamond { font-size: 0.45rem; color: var(--color-gold-mid); }
 
-/* Reveal on scroll */
+/* Reveal al hacer scroll */
 .reveal-up {
   opacity: 0;
   transform: translateY(22px);
-  transition: opacity 0.7s var(--ease-silk), transform 0.7s var(--ease-silk);
+  transition: opacity var(--anim-reveal) var(--ease-silk),
+              transform var(--anim-reveal) var(--ease-silk);
   transition-delay: var(--delay, 0s);
 }
-.reveal-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal-up.visible { opacity: 1; transform: translateY(0); }
 
 /* Film grain */
 .film-grain { position: relative; }
 .film-grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.22;
-  z-index: 1;
+  pointer-events: none; opacity: 0.22; z-index: 1;
 }
 
-/* Ripple */
+/* Efecto ripple en botones */
 .ripple { position: relative; overflow: hidden; }
 .ripple-wave {
-  position: absolute;
-  border-radius: 50%;
+  position: absolute; border-radius: 50%;
   background: rgba(212,175,106,0.22);
   transform: scale(0);
   animation: rippleAnim 0.55s linear;
@@ -237,7 +142,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 }
 @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
 
-/* Bandera Colombia */
+/* Franja Colombia */
 .stripe-colombia { display: flex; height: 5px; width: 100%; }
 .sc-y { flex: 2; background: var(--col-yellow); }
 .sc-b { flex: 1; background: var(--col-blue); }
