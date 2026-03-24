@@ -13,7 +13,7 @@
   var SECRET = 'soffy2026';
 
   /* ── Contador regresivo (coming-soon) ── */
-  var WEDDING_DATE = new Date(2026, 2, 22).getTime(); // 22 marzo 2026
+  var WEDDING_DATE = new Date(2026, 7, 22).getTime(); // 22 agosto 2026
 
   function pad(n, len) { return String(Math.max(0, n)).padStart(len || 2, '0'); }
 
