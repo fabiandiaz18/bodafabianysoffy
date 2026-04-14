@@ -147,3 +147,26 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .sc-y { flex: 2; background: var(--col-yellow); }
 .sc-b { flex: 1; background: var(--col-blue); }
 .sc-r { flex: 1; background: var(--col-red); }
+
+.versiculo {
+  font-family: var(--font-sc);
+  font-weight: 500;
+  font-size: clamp(00.5rem, 1.2vw, 0.65rem);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.versiculo-title {
+  font-family: var(--font-sc);
+  font-weight: 500;
+  font-size: clamp(0.60rem, 1.8vw, 0.78rem);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--color-gold-mid);
+  margin-bottom: 0.5rem;
+  display: block;
+  padding: 8px;
+}

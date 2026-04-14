@@ -174,3 +174,10 @@
   padding-bottom: clamp(1rem, 3.5vw, 2.2rem);
   line-height: 1; flex-shrink: 0;
 }
+
+.frase-section {
+  position: relative; background: var(--color-ivory-warm);
+  padding: 8px;
+  text-align: center; overflow: hidden;
+}
+.frase-section .versiculo-title { color: var(--color-gold); }

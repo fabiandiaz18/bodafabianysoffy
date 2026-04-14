@@ -157,3 +157,24 @@
   --anim-modal:     0.38s;  /* apertura del modal de mapas */
   --anim-nav:       0.35s;  /* apertura del menú móvil */
 }
+
+/*boton dresscode*/
+.dresscode-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(184,150,62,0.4);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-black-soft);
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
+}
+.dresscode-btn:hover {
+  background: var(--color-gold);
+  color: #ffffff;
+  border-color: var(--color-gold);
+}
