@@ -178,3 +178,63 @@
   color: #ffffff;
   border-color: var(--color-gold);
 }
+
+/*Sección aviso importante*/
+.aviso-section {
+  background: var(--color-black);
+  padding: var(--space-section-y) var(--space-section-x);
+  text-align: center;
+}
+
+.aviso-card {
+  max-width: 640px;
+  margin-inline: auto;
+  border: 1px solid rgba(212,175,106,0.3);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  position: relative;
+}
+
+.aviso-card::before, .aviso-card::after {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+  border-color: var(--color-gold);
+  border-style: solid;
+}
+.aviso-card::before { top: -1px; left: -1px;    border-width: 2px 0 0 2px; }
+.aviso-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+.aviso-icon {
+  font-size: 1.2rem;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.aviso-tag {
+  font-family: var(--font-sc);
+  font-weight: 500;
+  font-size: clamp(0.6rem, 1.5vw, 0.72rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-gold-mid);
+  margin-bottom: 0.8rem;
+}
+
+.aviso-titulo {
+  font-family: var(--font-big);
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  color: var(--color-ivory);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.aviso-texto {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  color: rgba(245,240,232,0.65);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto 0.8rem;
+}
+.aviso-texto:last-child { margin-bottom: 0; }
