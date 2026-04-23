@@ -238,3 +238,97 @@
   margin: 0 auto 0.8rem;
 }
 .aviso-texto:last-child { margin-bottom: 0; }
+
+/* Creditos de desarrollador*/
+.footer-credits {
+  padding: 1.5rem var(--space-section-x) 1.2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+.footer-credits-title {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.25);
+  margin-bottom: 0.8rem;
+}
+.footer-credits-title a {
+  color: rgba(212,175,106,0.5);
+  transition: color 0.3s;
+}
+.footer-credits-title a:hover { color: var(--color-gold-mid); }
+
+.footer-credits-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.4rem;
+}
+.footer-credits-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(245,240,232,0.2);
+  transition: color 0.3s;
+}
+.footer-credits-links a:hover { color: rgba(212,175,106,0.6); }
+.footer-credits-links svg {
+  width: 12px; height: 12px;
+  flex-shrink: 0; opacity: 0.6;
+}
+
+/* ── Coming soon credits ── */
+.cs-credits {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+  white-space: nowrap;
+}
+.cs-credits-title {
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.2);
+  margin-bottom: 0.4rem;
+}
+.cs-credits-title a {
+  color: rgba(212,175,106,0.35);
+  transition: color 0.3s;
+}
+.cs-credits-title a:hover { color: var(--color-gold-mid); }
+
+.cs-credits-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.cs-credits-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.52rem;
+  color: rgba(245,240,232,0.15);
+  transition: color 0.3s;
+}
+.cs-credits-links a:hover { color: rgba(212,175,106,0.5); }
+.cs-credits-links svg {
+  width: 11px; height: 11px;
+  flex-shrink: 0;
+}
+
+/* Ocultar texto en móvil, solo íconos */
+@media (max-width: 480px) {
+  .cs-credits-links a span,
+  .footer-credits-links a span { display: none; }
+  .cs-credits-links svg,
+  .footer-credits-links svg { width: 14px; height: 14px; }
+}
