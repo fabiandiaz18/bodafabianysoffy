@@ -48,7 +48,7 @@
 .rsvp-btn:active { transform: translateY(0); }
 .rsvp-btn-inner { display: flex; align-items: center; gap: 0.6rem; }
 .rsvp-btn-svg { width: 14px; height: 14px; stroke: currentColor; fill: none; flex-shrink: 0; }
-.rsvp-note { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,240,232,0.24); margin-top: 0.9rem; }
+.rsvp-note { font-family: var(--font-body); font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,240,232,0.24); margin-top: 0.9rem; }
 
 /* ── FOOTER ── */
 .footer { background: var(--color-black); padding: 2.5rem var(--space-section-x) 1.5rem; text-align: center; border-top: 1px solid rgba(212,175,106,0.1); }

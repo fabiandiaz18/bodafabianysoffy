@@ -556,6 +556,18 @@
     </div>
     <p class="rsvp-note reveal-up" style="--delay:0.6s">Confirmación en línea · Confirma con tu email</p>
     <p class="rsvp-note reveal-up" style="--delay:0.6s">Por favor confirma de manera individual a cada persona; Acompañantes, etc.</p>
+    <!-- ¿Cómo confirmar? -->
+    <button class="rsvp-guide-btn reveal-up" style="--delay:0.3s" onclick="document.getElementById('rsvp-guide-modal').classList.add('open')">
+      ¿Cómo confirmar tu asistencia?
+    </button>
+    <!-- ¿Necesitas ayuda? -->
+    <div class="rsvp-help reveal-up" style="--delay:0.4s">
+      <p class="rsvp-help-text">¿Necesitas ayuda?</p>
+      <a href="https://wa.me/573183683686?text=Hola+Fabian,+Necesito+ayuda+para+confirmar+mi+asistencia+a+la+boda" target="_blank" rel="noopener" class="rsvp-help-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        Pedir Ayuda
+      </a>
+    </div>
   </div>
 </section>
 
@@ -610,6 +622,65 @@
 <script src="js/02-navigation.js"></script>
 <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
 
+<!-- ══ Modal guía RSVP ══ -->
+<div id="rsvp-guide-modal" class="guide-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="guide-card">
+
+    <button class="guide-close" onclick="document.getElementById('rsvp-guide-modal').classList.remove('open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <p class="guide-tag">Paso a paso</p>
+    <h3 class="guide-titulo">¿Cómo confirmar tu asistencia?</h3>
+
+    <!-- ══ PASOS — edita el texto aquí ══ -->
+    <div class="guide-pasos">
+
+      <div class="guide-paso">
+        <span class="guide-num">01</span>
+        <div>
+          <p class="guide-paso-titulo">Haz clic en el botón</p>
+          <p class="guide-paso-desc">Presiona el botón "Confirmar Asistencia" que está arriba de esta guía.</p>
+        </div>
+      </div>
+
+      <!-- Imagen de referencia — reemplaza el src por tu imagen -->
+      <img class="guide-img" src="images/Paso1.webp" alt="Paso 1"/>
+
+      <div class="guide-paso">
+        <span class="guide-num">02</span>
+        <div>
+          <p class="guide-paso-titulo">Haz clin en Registrarte</p>
+          <p class="guide-paso-desc">Presiona el botón de "Registrarse" que aparece en la parte inferior de tu pantalla.</p>
+        </div>
+      </div>
+
+      <!-- Imagen de referencia -->
+      <img class="guide-img" src="images/Paso2.webp" alt="Paso 2"/>
+
+      <div class="guide-paso">
+        <span class="guide-num">03</span>
+        <div>
+          <p class="guide-paso-titulo">Completa el formulario</p>
+          <p class="guide-paso-desc">Ingresa tu nombre completo y tu correo electronico.</p>
+        </div>
+      </div>
+
+      <!-- Imagen de referencia -->
+      <img class="guide-img" src="images/Paso3.webp" alt="Paso 2"/>
+
+      <div class="guide-paso">
+        <span class="guide-num">04</span>
+        <div>
+          <p class="guide-paso-titulo">Envía tu confirmación</p>
+          <p class="guide-paso-desc">Presiona "Registrarse" y listo. Recibirás una confirmación por correo.</p>
+        </div>
+      </div>
+    </div>
+    <!-- ══ FIN PASOS ══ -->
+
+  </div>
+</div>
 
 </body>
 </html>
